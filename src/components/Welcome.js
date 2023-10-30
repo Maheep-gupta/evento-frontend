@@ -1,11 +1,7 @@
-import React, { useState } from 'react'
-import Signup from './Signup'
-import Login from './Login'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 function Welcome() {
-    const [userAccessibility, setUserAccessibility] = useState(2)
-
     return (
         <>
             <div >
