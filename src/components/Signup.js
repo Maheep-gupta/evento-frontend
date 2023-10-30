@@ -16,7 +16,7 @@ export default function Signup() {
                         <div className="w-full py-10 px-5 md:px-10">
                         <div className="text-center mb-5">
                                     <div className="flex w-full">
-                                        <Link to='/'>
+                                        <Link to='/' className="hidden md:block">
                                             <i className="fa-solid fa-arrow-left fa-xl p-5"></i>
                                         </Link>
                                         <h1 className="font-bold w-full text-3xl text-gray-900 pb-2 text-center">REGISTER</h1>
