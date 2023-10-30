@@ -1,19 +1,14 @@
 import React, { useState } from 'react'
 import Signup from './Signup'
 import Login from './Login'
+import { Link } from 'react-router-dom'
 
 function Welcome() {
     const [userAccessibility, setUserAccessibility] = useState(2)
 
     return (
         <>
-            {
-                userAccessibility ===1  ?
-                  <Login /> :
-                  userAccessibility ===0?
-                  <Signup />
-                  :
-                  <div >
+            <div >
 
                 <div class="text-center mb-10">
                     <h1 class="font-bold text-3xl text-gray-900">Hey,Welcome!</h1>
@@ -28,23 +23,25 @@ function Welcome() {
                     </div>
 
                     <div className="my-5">
+                        <Link to='/auth/signUp'>
+                            <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold my-4">
 
-                        <button onClick={() => {
-                            setUserAccessibility(0)
-                        }} className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold my-4">
-                            REGISTER
-                        </button>
 
-                        <button onClick={() => {
-                            setUserAccessibility(1)
-                        }} className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">
-                            LOGIN
-                        </button>
+                                REGISTER
+                            </button>
+                        </Link>
+
+                        <Link to='/auth/login'>
+                            <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">
+
+
+                                LOGIN
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>
-              }
-            
+
         </>
     )
 }
