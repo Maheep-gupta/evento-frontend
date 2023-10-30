@@ -12,7 +12,7 @@ function Welcome() {
             Welcome to EventO! We're excited to have you as part of our dynamic community. Our program is designed to ignite your passion and equip you with the skills to excel in the exhilarating world of event planning. You'll gain hands-on experience, collaborate with experts, and immerse yourself in the art of event execution.
           </div>
           <div className="text-center">
-            
+          Beyond academics, you'll find a vibrant college life with various clubs and activities. This journey is about growth, creativity, and lasting memories. Get ready to shape unforgettable experiences and create a successful future. We're here to support you every step of the way. Cheers to your adventure in event management!
           </div>
 
           <div className="my-5">
