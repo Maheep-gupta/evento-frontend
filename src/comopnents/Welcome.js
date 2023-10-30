@@ -9,7 +9,7 @@ function Welcome() {
 
         <div className="mt-10">
           <div className="text-center">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis ex
+            Lorem ipsum dolor sit consectetur adipisicing elit. Omnis ex
             natus sequi earum delectus placeat, eaque unde possimus, hic
             eligendi, vero molestiae dolores voluptatum esse?
           </div>
