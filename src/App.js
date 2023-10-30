@@ -8,7 +8,9 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomePage />}/>
+        <Route path="/" exact element={<HomePage />}/>
+        <Route path="/auth/login/" exact element={<Login />}/>
+        <Route path="/auth/signup/" exact element={<Signup />}/>
       </Routes>
     </>
   );
