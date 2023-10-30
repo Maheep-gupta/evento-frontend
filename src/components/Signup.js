@@ -1,6 +1,7 @@
 export default function Signup() {
     return (
         <>
+            
             <div class="text-center mb-10">
                 <h1 class="font-bold text-3xl text-gray-900">REGISTER</h1>
                 <p>Enter your information to register</p>
