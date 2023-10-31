@@ -15,7 +15,7 @@ function Navbar({ title }) {
                     </div>
                 </Link>
                 {console.log(admin)}
-                {admin ? <AdminNav title={title} /> : <UserNav title={title } />}
+                {admin === 'true' ? <AdminNav title={title} /> : <UserNav title={title } />}
                 {/* Account */}
                 <Link className="flex items-center justify-center w-full h-16 mt-auto bg-gray-200 hover:bg-gray-300 text-black" to="#">
                     <svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
