@@ -14,7 +14,7 @@ function AdminEvent() {
           {/* @MOHIT write code in this div */}
           <div>
 
-            <span>Admin Event</span>
+            <span>Admin Event haa kar dunga mai </span>
           </div>
           </div>:<Navigate to='/auth/login'/>
             }
