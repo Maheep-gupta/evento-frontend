@@ -1,6 +1,24 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Signup() {
+    const [show, setShow] = useState(0)
+    const [formData, setFormData] = useState({
+        
+            firstName: '',
+            lastName:'',
+        emailId: '',
+        collegeId: 21038201000,
+        password:''
+    })
+    function handleShow() {
+        if (show === 1) {
+            setShow(0)
+        } else {
+
+            setShow(1)
+        }
+    }
     return (
         <>
 
@@ -14,53 +32,74 @@ export default function Signup() {
                         </div>
 
                         <div className="w-full py-10 px-5 md:px-10">
-                        <div className="text-center mb-5">
-                                    <div className="flex w-full">
-                                        <Link to='/' className="hidden md:block">
-                                            <i className="fa-solid fa-arrow-left fa-xl p-5"></i>
-                                        </Link>
-                                        <h1 className="font-bold w-full text-3xl text-gray-900 pb-2 text-center">REGISTER</h1>
-                                    </div>
-                                    <p className="pl-12">Enter your information to Register</p>
+                            <div className="text-center mb-5">
+                                <div className="flex w-full">
+                                    <Link to='/' className="hidden md:block">
+                                        <i className="fa-solid fa-arrow-left fa-xl p-5"></i>
+                                    </Link>
+                                    <h1 className="font-bold w-full text-3xl text-gray-900 pb-2 text-center">REGISTER</h1>
                                 </div>
+                                <p className="pl-12">Enter your information to Register</p>
+                            </div>
                             <div>
                                 <div className="flex mx-3">
                                     <div className="w-1/2 px-3 mb-5">
-                                        <label for="" className="text-xs font-semibold px-1">First name</label>
+                                        <label htmlFor="" className="text-xs font-semibold px-1">First name</label>
                                         <div className="flex">
-                                            <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="fa-regular fa-user"></i></div>
-                                            <input type="text" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="John" />
+                                            <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="fa-solid fa-user"></i></div>
+                                            <input type="text" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="John" onChange={(e)=>{
+                                                setFormData({...formData,firstName:e.target.value} )
+                                            }} value={formData.firstName} />
                                         </div>
                                     </div>
                                     <div className="w-1/2 px-3 mb-5">
-                                        <label for="" className="text-xs font-semibold px-1">Last name</label>
+                                        <label htmlFor="" className="text-xs font-semibold px-1">Last name</label>
                                         <div className="flex">
-                                            <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="fa-regular fa-user"></i></div>
-                                            <input type="text" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Smith" />
+                                            <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="fa-solid fa-user"></i></div>
+                                            <input type="text" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Smith" onChange={(e)=>{
+                                                setFormData({...formData,lastName:e.target.value} )
+                                            }} value={formData.lastName}/>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="flex mx-3">
                                     <div className="w-full px-3 mb-5">
-                                        <label for="" className="text-xs font-semibold px-1">Email</label>
+                                        <label htmlFor="cId" className="text-xs font-semibold px-1">College ID</label>
                                         <div className="flex">
-                                            <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="fa-regular fa-envelope"></i></div>
-                                            <input type="email" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="johnsmith@example.com" />
+                                            <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="fa-solid fa-id-badge"></i></div>
+                                            <input type="number" name="cId" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="21038201000XX" onChange={(e)=>{
+                                                setFormData({...formData,collegeId:e.target.value} )
+                                            }} value={formData.collegeId}/>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="flex mx-3">
-                                    <div className="w-full px-3 mb-12">
-                                        <label for="" className="text-xs font-semibold px-1">Password</label>
+                                    <div className="w-full px-3 mb-5">
+                                        <label htmlFor="email" className="text-xs font-semibold px-1">Email ID</label>
                                         <div className="flex">
-                                            <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="fa-solid fa-lock"></i></div>
-                                            <input type="password" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="************" />
+                                            <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                                            <i class="fa-solid  fa-envelope"></i>
+                                            </div>
+                                            <input type="email" name="email" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="johnsmith@gmail.com" onChange={(e)=>{
+                                                setFormData({...formData,emailId:e.target.value} )
+                                            }} value={formData.emailId}/>
                                         </div>
+                                    </div>
+                                </div>
+                                <div className="flex mx-6">
+                                    <div className="w-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="fa-solid fa-lock z-10"></i></div>
+                                    <input type={show ? 'text' : 'password'} name="password" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="************"  onChange={(e)=>{
+                                                setFormData({...formData,password:e.target.value} )
+                                            }} value={formData.password} />
+                                    <div className="w-10 border-2 px-1 text-center flex items-center justify-center rounded-lg border-gray-200 outline-none focus:border-indigo-500 bg-white" onClick={handleShow}>
+                                        {
+                                            show ? <i className="fa-solid fa-eye-slash"></i> : <i className="fa-solid fa-eye"></i>
+                                        }
                                     </div>
                                 </div>
                                 <div className="flex -mx-3">
-                                    <div className="w-full px-3 mb-5">
-                                        <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">REGISTER NOW</button>
+                                    <div className="w-full px-3 mb-5 mt-5">
+                                        <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold" onClick={()=>{console.log(formData)}}>REGISTER NOW</button>
                                     </div>
                                 </div>
                             </div>
