@@ -10,10 +10,11 @@ import UpcomingEvent from "./components/UpcomingEvent";
 import Dashboard from "./components/admin/Dashboard";
 import CompletedEvents from "./components/admin/CompletedEvents";
 import AdminEvent from "./components/admin/AdminEvent";
+import Account from "./components/Account";
 
 function App() {
   // This will get true after a successfull login of of the Admin
-  localStorage.setItem('adminLogged', false)
+  localStorage.setItem('adminLogged', true)
   const adminLogin = localStorage.getItem('adminLogged')
   console.log("App",adminLogin);
   return (
@@ -26,7 +27,8 @@ function App() {
         <Route path="/search" exact element={<Search />} />
         <Route path="/participatedEvent" exact element={<ParticipatedEvents />} />
         <Route path="/upcomingEvent" exact element={<UpcomingEvent />} />
-
+        <Route path="/user/account" exact element={<Account />} />
+        
         {/* Admin */}
 
         <Route path="/admin/dashboard" exact element={
@@ -38,6 +40,7 @@ function App() {
         {/* THis need alter i guess */}
         <Route path="/admin/upcomingEvent" exact element={<UpcomingEvent />} />
         <Route path="/admin/completedEvent" exact element={<CompletedEvents />} />
+
 
       </Routes>
     </>
