@@ -1,7 +1,7 @@
 import React from 'react'
 import Welcome from './Welcome'
 
-function HomePage() {
+function HomePage() { 
   return (
     <div className="min-w-screen min-h-screen bg-gradient-to-tl from-green-400 to-indigo-900  flex items-center justify-center px-5 py-5">
       <div className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden" style={{
