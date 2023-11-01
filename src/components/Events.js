@@ -4,10 +4,10 @@ import Navbar from './Navbar'
 function Events() {
   return (
     <>
-      <div className='flex'>
+      <div className='flex '>
 
         <Navbar title='home'/>
-        <span>Event</span>
+        <div className='bg-gradient-to-tl from-green-400 to-indigo-900 w-full text-white'>Event</div>
       </div>
 
     </>

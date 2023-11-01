@@ -12,7 +12,7 @@ function CompletedEvents() {
 
           <Navbar title='completedEvents' admin={true} />
           {/* @MOHIT write code in this div */}
-          <div>
+          < div className='bg-gradient-to-tl from-green-400 to-indigo-900 w-full text-white'>
 
             <span>CompletedEvents</span>
           </div>

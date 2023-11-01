@@ -9,7 +9,7 @@ function UpcomingEvent() {
             <div className='flex'>
 
                 <Navbar title='ue' />
-                <span>Upcoming Event</span>
+                <div className='bg-gradient-to-tl from-green-400 to-indigo-900 w-full text-white'> Upcoming Event</div>
             </div>
         </>
     )

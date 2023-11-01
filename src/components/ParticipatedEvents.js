@@ -7,7 +7,9 @@ function ParticipatedEvents() {
             <div className='flex'>
 
                 <Navbar title='pe' />
-                <span>Participated Event</span>
+                <div className='bg-gradient-to-tl from-green-400 to-indigo-900 w-full text-white'>                <span>Participated Event</span>
+                </div>
+
             </div>
 
         </>
