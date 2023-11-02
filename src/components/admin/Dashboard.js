@@ -10,11 +10,11 @@ function Dashboard() {
       {
         adminLogin === 'true'
           ?
-          <div className='flex'>
+          <div className='flex h-screen w-screen bg-gradient-to-tl from-green-400 to-indigo-900'>
 
             <Navbar title='dashboard' admin={true} />
             {/* @MOHIT write code in this div */}
-                            <div className='bg-gradient-to-tl from-green-400 to-indigo-900 w-full text-white'>Dashboard</div>
+            <div className='bg-gradient-to-tl from-green-400 to-indigo-900 w-full text-white'>Dashboard</div>
           </div>
           :
           <Navigate to='/' />

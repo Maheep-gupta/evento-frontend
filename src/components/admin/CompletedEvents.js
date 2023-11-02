@@ -8,7 +8,7 @@ function CompletedEvents() {
   return (
     <>
       {adminLogin === 'true' ?
-        <div className='flex'>
+        <div className='flex h-screen w-screen bg-gradient-to-tl from-green-400 to-indigo-900'>
 
           <Navbar title='completedEvents' admin={true} />
           {/* @MOHIT write code in this div */}

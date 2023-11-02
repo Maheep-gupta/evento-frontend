@@ -4,9 +4,9 @@ import Navbar from "./Navbar";
 function Events() {
   return (
     <>
-      <div className="flex ">
+      <div className="flex h-screen w-screen bg-gradient-to-tl from-green-400 to-indigo-900">
         <Navbar title="home" />
-        <div className="bg-gradient-to-tl from-green-400 to-indigo-900 w-full text-white">
+        <div className=" w-full text-white">
           
           <div className="relative flex w-full max-w-[20rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg mt-5 mx-5">
 

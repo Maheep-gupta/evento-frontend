@@ -8,7 +8,7 @@ function Navbar({ title }) {
     console.log(title);
     return (
         <>
-            <div className="flex flex-col items-center w-48 h-screen overflow-hidden text-gray-700 bg-gray-100 rounded">
+            <div className="flex ml-4 mt-4 mb-4 flex-col items-center w-48 overflow-hidden text-gray-700 bg-gray-100 rounded">
                 <Link className="flex items-center w-full px-3 mt-3" to="/">
                     <div className=" h-10 fill-current">
                         <img src={require('../assets/evento-black.png')} alt='EventO'/>
