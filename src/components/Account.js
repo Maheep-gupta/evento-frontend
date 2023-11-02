@@ -4,7 +4,7 @@ import Navbar from './Navbar'
 function Account() {
     return (
         <>
-            <div className='flex h-screen w-screen bg-gradient-to-tl from-green-400 to-indigo-900'>
+            <div className='flex h-full w-screen '>
                 <Navbar title='account' />
                 <div className='bg-gradient-to-tl from-green-400 to-indigo-900 w-full'>
                     <section class=" bg-gradient-to-tl from-green-400 to-indigo-900 w-full">

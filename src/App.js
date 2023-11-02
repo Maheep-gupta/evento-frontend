@@ -18,7 +18,9 @@ function App() {
   const adminLogin = localStorage.getItem('adminLogged')
   console.log("App",adminLogin);
   return (
+    
     <>
+      {document.body.setAttribute('class','bg-gradient-to-tl from-green-400 to-indigo-900')}
       <Routes>
         <Route path="/" exact element={<HomePage />} />
         <Route path="/auth/login/" exact element={<Login />} />
@@ -44,7 +46,7 @@ function App() {
 
       </Routes>
     </>
-  );
+  )
 }
 
 export default App;

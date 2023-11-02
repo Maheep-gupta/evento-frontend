@@ -6,7 +6,6 @@ import UserNav from './navComponents/UserNav';
 function Navbar({ title }) {
     const [mobileNav, setMobileNav] = useState(false)
     const admin = localStorage.getItem('adminLogged')
-    console.log("Before", mobileNav);
     function toggleView() {
         if (mobileNav) {
             setMobileNav(false)
@@ -14,7 +13,6 @@ function Navbar({ title }) {
             setMobileNav(true)
         }
     }
-    console.log("After", mobileNav);
     return (
         <>
             <div className="ham flex justify-evenly lg:hidden z-20 m-2" >
