@@ -14,7 +14,7 @@ import Account from "./components/Account";
 
 function App() {
   // This will get true after a successfull login of of the Admin
-  localStorage.setItem('adminLogged', true)
+  localStorage.setItem('adminLogged', false)
   const adminLogin = localStorage.getItem('adminLogged')
   console.log("App",adminLogin);
   return (

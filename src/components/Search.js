@@ -6,7 +6,7 @@ function Search() {
         <>
             <div className='flex h-screen w-screen bg-gradient-to-tl from-green-400 to-indigo-900'>
                 <Navbar title='search' />
-                <div className='bg-gradient-to-tl from-green-400 to-indigo-900 w-full text-white'>Search</div>
+                <div className=' w-full text-white'>Search</div>
                 {/* <span>Search</span> */}
             </div>
         </>
