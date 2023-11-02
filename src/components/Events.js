@@ -28,7 +28,7 @@ function Events() {
             </div>
           </div>
           <div className="sports-events mt-4">
-            <p className="text-4xl bg-white text-black font-medium p-5 lg:w-full rounded-xl "> Coding Events</p>
+            <p className="text-4xl bg-white text-black font-medium p-5 lg:w-full rounded-xl "> Sports Events</p>
             <div className="event-main flex flex-wrap justify-evenly">
 
               <EventCard />
