@@ -4,10 +4,11 @@ import Navbar from './Navbar'
 function Account() {
     return (
         <>
-            <div className='flex h-full w-screen '>
+            <div className='flex lg:h-full h-full w-screen flex-col lg:flex-row '>
+
                 <Navbar title='account' />
-                <div className='bg-gradient-to-tl from-green-400 to-indigo-900 w-full'>
-                    <section class=" bg-gradient-to-tl from-green-400 to-indigo-900 w-full">
+                <div className='lg:w-full text-black mt-4 ml-4 mr-2'>
+                    <section class="w-full">
                         <div class="px-4 mx-auto">
                             <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
                                 <div class="px-6">
@@ -67,6 +68,7 @@ function Account() {
                         </div>
                     </section>
                 </div>
+
             </div>
         </>
     )
