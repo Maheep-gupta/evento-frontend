@@ -66,7 +66,7 @@ export default function Signup() {
                                     <div className="w-full px-3 mb-5">
                                         <label htmlFor="cId" className="text-xs font-semibold px-1">College ID</label>
                                         <div className="flex">
-                                            <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="fa-solid fa-id-badge"></i></div>
+                                            <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="fa-solid fa-id-badge"></i></div>
                                             <input type="number" name="cId" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="21038201000XX" onChange={(e)=>{
                                                 setFormData({...formData,collegeId:e.target.value} )
                                             }} value={formData.collegeId}/>
@@ -78,7 +78,7 @@ export default function Signup() {
                                         <label htmlFor="email" className="text-xs font-semibold px-1">Email ID</label>
                                         <div className="flex">
                                             <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                                            <i class="fa-solid  fa-envelope"></i>
+                                            <i className="fa-solid  fa-envelope"></i>
                                             </div>
                                             <input type="email" name="email" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="johnsmith@gmail.com" onChange={(e)=>{
                                                 setFormData({...formData,emailId:e.target.value} )

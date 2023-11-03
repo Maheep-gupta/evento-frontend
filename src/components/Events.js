@@ -6,7 +6,7 @@ function Events() {
   return (
     <>
 
-      <div className="flex h-full w-screen flex-col lg:flex-row  ">
+      <div className="flex h-full flex-col lg:flex-row  ">
         <Navbar title="home" />
         <div className="lg:w-full text-white mt-4 ml-4 mr-2">
           <div className="popular-events">

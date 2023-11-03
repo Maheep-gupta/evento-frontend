@@ -9,9 +9,11 @@ import ParticipatedEvents from "./components/ParticipatedEvents";
 import UpcomingEvent from "./components/UpcomingEvent";
 import Dashboard from "./components/admin/Dashboard";
 import CompletedEvents from "./components/admin/CompletedEvents";
-import AdminEvent from "./components/admin/AdminEvent";
 import Account from "./components/Account";
 import EventsDetail from "./components/EventsDetail";
+import CreateEvent from "./components/admin/CreateEvent";
+import ForgetPassword from "./components/ForgetPassword";
+import AdminUpcomingEvent from "./components/admin/AdminUpcomingEvent";
 
 function App() {
   // This will get true after a successfull login of of the Admin
@@ -32,6 +34,7 @@ function App() {
         <Route path="/upcomingEvent" exact element={<UpcomingEvent />} />
         <Route path="/user/account" exact element={<Account />} />
         <Route path="/eventDetail" exact element={<EventsDetail />} />
+        <Route path="/forgetPassword" exact element={<ForgetPassword />} />
 
         
         {/* Admin */}
@@ -39,12 +42,11 @@ function App() {
         <Route path="/admin/dashboard" exact element={
           <Dashboard />
         } />
-        <Route path="/admin/events" exact element={
-          <AdminEvent />
-        } />
         {/* THis need alter i guess */}
-        <Route path="/admin/upcomingEvent" exact element={<UpcomingEvent />} />
+        <Route path="/admin/upcomingEvent" exact element={<AdminUpcomingEvent />} />
         <Route path="/admin/completedEvent" exact element={<CompletedEvents />} />
+        <Route path="/admin/events/create" exact element={<CreateEvent />} />
+
 
 
       </Routes>
