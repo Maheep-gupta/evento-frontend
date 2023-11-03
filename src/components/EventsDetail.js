@@ -17,7 +17,7 @@ function EventsDetail() {
 
               </h1>
               <p className="text-sm text-gray-700 sm:text-base dark:text-black mt-5">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae dolore eum voluptatibus facilis cupiditate, modi corrupti est maiores sunt natus quasi distinctio ratione nulla minima aspernatur ipsa inventore provident eveniet!
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae dolore eum voluptatibus facilis cupiditate, modi corrupti est maiores sunt natus quasi distinctio ratione nulla minima aspernatur ipsa inventore provident eveniet!ghhf
               </p>
 
               <div>
