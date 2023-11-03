@@ -19,23 +19,47 @@ function EventsDetail() {
               <p class="text-sm text-gray-700 sm:text-base dark:text-black mt-5">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae dolore eum voluptatibus facilis cupiditate, modi corrupti est maiores sunt natus quasi distinctio ratione nulla minima aspernatur ipsa inventore provident eveniet!
               </p>
+
+              <div>
+            <h3 className="text-md md:text-xl font-semibold text-black mt-5">
+              Timing
+            </h3>
+            <p className="mt-2 text-white">{Event.timing}</p>
+          </div>
+          <div>
+            <h3 className="text-md md:text-xl font-semibold text-black">
+              Venue
+            </h3>
+            <p className="mt-2 text-white">{Event.venue}</p>
+          </div>
+          <div>
+            <h3 className="text-md md:text-xl font-semibold text-black">
+              Event Coordinators
+            </h3>
+            <p className="mt-2 font-bold text-black">{Event.cord}</p>
+            <p className="text-whitish">{Event.contact}</p>
+          </div>
+
+
               <div class="flex mt-8">
                 <button
-                  className=" block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-2 py-2 font-semibold my-2"
+                  className=" block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-900 focus:bg-indigo-900 text-white rounded-lg px-2 py-2 font-semibold my-2"
                   type="button"
                   data-ripple-light="true"
                 >
                   REGISTER
                 </button>
               </div>
+
+
             </div>
-            <div class="relative hidden sm:block sm:w-1/3 lg:w-3/5">
-              <img
+            <div class="relative hidden sm:block sm:w-1/3 lg:w-3/5 ">
+              <img className="rounded-xl "
                 src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"
                 alt="ui/ux review check"
               />
             </div>
-          </div>
+          </div>  
         </div>
       </div>
 
