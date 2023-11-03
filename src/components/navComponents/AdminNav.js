@@ -18,11 +18,11 @@ function AdminNav({title}) {
                         </svg>
                         <span className="ml-2 text-sm font-medium">Completed Events</span>
                     </Link>
-                    <Link className={`flex items-center w-full h-12 px-3 mt-2 ${title === 'adEvent' ? 'bg-gray-300' : 'hover:bg-gray-300'} text-black rounded`} to="/admin/events">
+                    <Link className={`flex items-center w-full h-12 px-3 mt-2 ${title === 'createEvent' ? 'bg-gray-300' : 'hover:bg-gray-300'} text-black rounded`} to="/admin/events/create">
                         <svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        <span className="ml-2 text-sm font-medium text-justify">Events</span>
+                        <span className="ml-2 text-sm font-medium text-justify">Create Event</span>
                     </Link>
                     <Link className={`flex items-center w-full h-12 px-3 mt-2 rounded ${title === 'ue' ? 'bg-gray-300' : 'hover:bg-gray-300'} text-black`} to="/admin/upcomingEvent">
                         <svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

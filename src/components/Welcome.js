@@ -6,10 +6,10 @@ function Welcome() {
         <>
             <div >
 
-                <div class="text-center mb-10">
-                    <h1 class="font-bold text-3xl text-gray-900">Hey,Welcome!</h1>
+                <div className="text-center mb-10">
+                    <h1 className="font-bold text-3xl text-gray-900">Hey,Welcome!</h1>
                     <p>to EventO</p>
-                    {/* <strong class="font-bold text-gray-900 ">to EventO</strong> */}
+                    {/* <strong className="font-bold text-gray-900 ">to EventO</strong> */}
                 </div>
                 <div className="mt-10">
                     <div className="text-justify">
