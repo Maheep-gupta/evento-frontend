@@ -3,14 +3,13 @@ import Navbar from "./Navbar";
 
 function EventsDetail() {
   return (
-    <div className="flex h-full w-screen ">
-      <Navbar title="event" />
-      <div className=" w-full text-white">
+    <div className='flex lg:h-full h-screen w-screen flex-col lg:flex-row '>
 
-
-        <div class="relative z-20 flex items-center overflow-hidden bg-white white:bg-white-800 mt-5 mx-5 my-5 rounded-2xl">
+      <Navbar title='home' />
+      <div className='lg:w-full text-white mt-4 ml-4 mr-2'>
+        <div class="relative flex items-center overflow-hidden bg-white white:bg-white-800 mt-5 mx-5 my-5 rounded-2xl">
           <div class="container relative flex px-6 py-16 mx-auto">
-            <div class="relative z-20 flex flex-col sm:w-2/3 lg:w-2/5">
+            <div class="relative flex flex-col sm:w-2/3 lg:w-2/5">
               <span class="w-20 h-2 mb-12 bg-gray-800 dark:bg-black"></span>
               <h1 class="flex flex-col text-6xl font-black-bold leading-none text-gray-800 uppercase font-bebas-neue sm:text-5xl dark:text-black">
                 About the Event
@@ -21,24 +20,24 @@ function EventsDetail() {
               </p>
 
               <div>
-            <h3 className="text-md md:text-xl font-semibold text-black mt-5">
-              Timing
-            </h3>
-            <p className="mt-2 text-white">{Event.timing}</p>
-          </div>
-          <div>
-            <h3 className="text-md md:text-xl font-semibold text-black">
-              Venue
-            </h3>
-            <p className="mt-2 text-white">{Event.venue}</p>
-          </div>
-          <div>
-            <h3 className="text-md md:text-xl font-semibold text-black">
-              Event Coordinators
-            </h3>
-            <p className="mt-2 font-bold text-black">{Event.cord}</p>
-            <p className="text-whitish">{Event.contact}</p>
-          </div>
+                <h3 className="text-md md:text-xl font-semibold text-black mt-5">
+                  Timing
+                </h3>
+                <p className="mt-2 text-white">{Event.timing}</p>
+              </div>
+              <div>
+                <h3 className="text-md md:text-xl font-semibold text-black">
+                  Venue
+                </h3>
+                <p className="mt-2 text-white">{Event.venue}</p>
+              </div>
+              <div>
+                <h3 className="text-md md:text-xl font-semibold text-black">
+                  Event Coordinators
+                </h3>
+                <p className="mt-2 font-bold text-black">{Event.cord}</p>
+                <p className="text-whitish">{Event.contact}</p>
+              </div>
 
 
               <div class="flex mt-8">
@@ -59,7 +58,7 @@ function EventsDetail() {
                 alt="ui/ux review check"
               />
             </div>
-          </div>  
+          </div>
         </div>
       </div>
 
