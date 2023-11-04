@@ -1,17 +1,23 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
+import Alerts from "./Alerts";
 
 
 export default function Login() {
     const [show, setShow] = useState(0)
+    const [ActivateAlert, setActivateAlert] = useState(false)
+    const [alertMsg, setAlertMsg] = useState({
+        statusCode: '',
+        msg: ''
+    })
     const [formData, setFormData] = useState({
         collegeId: 21038201000,
         password: ''
     })
     const adminLogin = localStorage.getItem('adminLogged')
     const userLogged = localStorage.getItem('userLogged')
-    
+
     function handleShow() {
         if (show === 1) {
             setShow(0)
@@ -22,33 +28,52 @@ export default function Login() {
     }
     console.log(formData);
     function handleSubmit() {
-        axios({
-            method: "post",
-            url: "https://college-event-management-backend-production-1e34.up.railway.app/api/auth/login",
-            data: formData,
-            headers: { "Content-Type": "application/json" },
-        })
-            .then(function (response) {
-                //handle success
-                console.log(response.data.role);
-                if (response.data.role === 'Admin') {
-                    localStorage.setItem('adminLogged', true)
-                    localStorage.setItem('userLogged', false)
-                    window.location.href='/admin/dashboard'
-                } else {
-                    localStorage.setItem('adminLogged', false)
-                    localStorage.setItem('userLogged', true)
-                    window.location.href='/home'
-                }
+        if (formData.collegeId === 21038201000 || formData.password === '') {
+            alert("Please fill all the details")
+        } else {
+            axios({
+                method: "post",
+                url: "https://college-event-management-backend-production-1e34.up.railway.app/api/auth/login",
+                data: formData,
+                headers: { "Content-Type": "application/json" },
             })
-            .catch(function (response) {
-                //handle error
-                console.log(response);
-            });
+                .then(function (response) {
+                    //handle success
+                    console.log(response.data.role);
+                    if (response.data.statusCode === 200) {
+                        if (response.data.role === 'Admin') {
+                            localStorage.setItem('adminLogged', true)
+                            localStorage.setItem('userLogged', false)
+                            setActivateAlert(true)
+                            setAlertMsg({ ...alertMsg, statusCode: response.data.statusCode })
+                            setAlertMsg({ ...alertMsg, msg: response.data.message })
+                            window.location.href = '/admin/dashboard'
+                        } else {
+                            localStorage.setItem('adminLogged', false)
+                            localStorage.setItem('userLogged', true)
+                            setActivateAlert(true)
+                            console.log("alert msg", alertMsg);
+                            setAlertMsg({ ...alertMsg, statusCode: response.data.statusCode })
+                            setAlertMsg({ ...alertMsg, msg: response.data.message })
+                            window.location.href = '/home'
+                        }
+                    } else {
+                        setActivateAlert(true)
+                        setAlertMsg({ ...alertMsg, statusCode: response.data.statusCode })
+                        setAlertMsg({ ...alertMsg, msg: response.data.message })
+                    }
+
+                })
+                .catch(function (response) {
+                    //handle error
+                    console.log(response);
+                });
+        }
+
     }
     return (
         <>
-            {adminLogin === 'true'?<Navigate to='/admin/dashboard'/>:userLogged==='true'?<Navigate to='/home'/>:<div className="min-w-screen min-h-screen bg-gradient-to-tl from-green-400 to-indigo-900  flex items-center justify-center px-5 py-5">
+            {adminLogin === 'true' ? <Navigate to='/admin/dashboard' /> : userLogged === 'true' ? <Navigate to='/home' /> : <div className="min-w-screen min-h-screen bg-gradient-to-tl from-green-400 to-indigo-900  flex items-center justify-center px-5 py-5 flex flex-col">
                 <div className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden" style={{
                     maxWidth: '1000px'
                 }}>
@@ -120,8 +145,11 @@ export default function Login() {
                         </div>
                     </div>
                 </div>
+                <div className="pt-4">
+                    {ActivateAlert === true ? alertMsg.statusCode === 200 ? <Alerts msg={alertMsg.msg} type={200} /> : <Alerts msg={alertMsg.msg} type={400} /> : ''}
+                </div>
             </div>}
-            
+
 
         </>
     )

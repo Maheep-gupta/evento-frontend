@@ -1,9 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
+import Alerts from "./Alerts";
 
 export default function Signup() {
     const [show, setShow] = useState(0)
+    const [ActivateAlert, setActivateAlert] = useState(false)
+    const [alertMsg, setAlertMsg] = useState({
+        statusCode: '',
+        msg: ''
+    })
     const adminLogin = localStorage.getItem('adminLogged')
     const userLogged = localStorage.getItem('userLogged')
     const [formData, setFormData] = useState({
@@ -23,40 +29,50 @@ export default function Signup() {
         }
     }
     function handleSubmit() {
-        const postData = {
-            name:(formData.firstName.charAt(0).toUpperCase())+formData.firstName.slice(1)+' '+(formData.lastName.charAt(0).toUpperCase())+formData.lastName.slice(1),
-            email: formData.emailId,
-            collegeId: formData.collegeId,
-            password: formData.password
-        }
-        axios({
-            method: "post",
-            url: "https://college-event-management-backend-production-1e34.up.railway.app/api/auth/signup",
-            data: postData,
-            headers: { "Content-Type": "application/json" },
-        })
-            .then(function (response) {
-                //handle success
-                console.log(response.data);
-                if (response.data.statusCode === 200) {
-                    localStorage.setItem('adminLogged', false)
-                    localStorage.setItem('userLogged', true)
-                    window.location.href = '/home'
-                    console.log("200",response.data.message)
-
-                } else {
-                    console.log(response.data.message)
-
-                }
+        if (formData.firstName === '' || formData.lastName === '' || formData.collegeId === 21038201000 || formData.emailId === '' || formData.password === '') {
+            alert("Fill the all details")
+        } else {
+            const postData = {
+                name: (formData.firstName.charAt(0).toUpperCase()) + formData.firstName.slice(1) + ' ' + (formData.lastName.charAt(0).toUpperCase()) + formData.lastName.slice(1),
+                email: formData.emailId,
+                collegeId: formData.collegeId,
+                password: formData.password
+            }
+            axios({
+                method: "post",
+                url: "https://college-event-management-backend-production-1e34.up.railway.app/api/auth/signup",
+                data: postData,
+                headers: { "Content-Type": "application/json" },
             })
-            .catch(function (response) {
-                //handle error
-                console.log(response);
-            });
+                .then(function (response) {
+                    //handle success
+                    console.log(response.data);
+                    if (response.data.statusCode === 200) {
+                        localStorage.setItem('adminLogged', false)
+                        localStorage.setItem('userLogged', true)
+                        console.log("200", response.data.message)
+                        setActivateAlert(true)
+                        setAlertMsg({ ...alertMsg, statusCode: response.data.statusCode })
+                        setAlertMsg({ ...alertMsg, msg: response.data.message })
+                        window.location.href = '/home'
+                    } else {
+                        setActivateAlert(true)
+                        console.log("alert msg",alertMsg);
+                        setAlertMsg({ ...alertMsg, statusCode: response.data.statusCode })
+                        setAlertMsg({ ...alertMsg, msg: response.data.message })
+
+
+                    }
+                })
+                .catch(function (response) {
+                    //handle error
+                    console.log(response);
+                });
+        }
     }
     return (
         <>
-            {adminLogin === 'true' ? <Navigate to='/admin/dashboard' /> : userLogged === 'true' ? <Navigate to='/home' /> : <div className="min-w-screen min-h-screen bg-gradient-to-tl from-green-400 to-indigo-900  flex items-center justify-center px-5 py-5">
+            {adminLogin === 'true' ? <Navigate to='/admin/dashboard' /> : userLogged === 'true' ? <Navigate to='/home' /> : <div className="min-w-screen min-h-screen bg-gradient-to-tl from-green-400 to-indigo-900  flex items-center justify-center px-5 flex-col">
                 <div className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden" style={{
                     maxWidth: '1000px'
                 }}>
@@ -142,7 +158,11 @@ export default function Signup() {
                         </div>
                     </div>
                 </div>
+                <div className="pt-4">
+                    {ActivateAlert === true ? alertMsg.statusCode === 200 ? <Alerts msg={alertMsg.msg} type={200} /> : <Alerts msg={alertMsg.msg} type={400} /> : ''}
+                </div>
             </div>}
+
 
 
 
