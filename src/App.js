@@ -14,6 +14,8 @@ import EventsDetail from "./components/EventsDetail";
 import CreateEvent from "./components/admin/CreateEvent";
 import ForgetPassword from "./components/ForgetPassword";
 import AdminUpcomingEvent from "./components/admin/AdminUpcomingEvent";
+import OtpPage from "./components/OtpPage";
+import ResetPassword from "./components/ResetPassword";
 
 function App() {
   // This will get true after a successfull login of of the Admin
@@ -35,6 +37,8 @@ function App() {
         <Route path="/user/account" exact element={<Account />} />
         <Route path="/eventDetail" exact element={<EventsDetail />} />
         <Route path="/forgetPassword" exact element={<ForgetPassword />} />
+        <Route path="/verify" exact element={<OtpPage />} />
+        <Route path="/resetPassword" exact element={<ResetPassword />} />
 
         
         {/* Admin */}

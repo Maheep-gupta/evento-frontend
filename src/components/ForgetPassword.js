@@ -7,18 +7,18 @@ function ForgetPassword() {
       <div className="flex items-center justify-center p-12 h-screen">
             <div className="mx-auto w-full max-w-[550px] bg-white text-black p-9 rounded-xl">
           <h1 className="text-4xl font-medium">Reset password</h1>
-          <p className="text-slate-500">Fill up the form to reset the password</p>
+          <p className="text-slate-500">Fill up the form to verify the email</p>
 
           <form action="" className="my-10">
             <div className="flex flex-col space-y-5">
-              <label for="email">
-                <p className="font-medium text-slate-700 pb-2">Email address</p>
+              <label for="collegeId">
+                <p className="font-medium text-slate-700 pb-2">College ID</p>
                 <input
-                  id="email"
-                  name="email"
-                  type="email"
+                  id="collegeId"
+                  name="collegeId"
+                  type="collegeId"
                   className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
-                  placeholder="Enter email address"
+                  placeholder="College ID"
                 />
               </label>
 
@@ -38,7 +38,7 @@ function ForgetPassword() {
                   />
                 </svg>
 
-                <span>Reset Password</span>
+                <span>Verify the Email</span>
               </button>
               <p className="text-center">
                 Not registered yet?{" "}
