@@ -1,15 +1,18 @@
+import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 export default function Signup() {
     const [show, setShow] = useState(0)
+    const adminLogin = localStorage.getItem('adminLogged')
+    const userLogged = localStorage.getItem('userLogged')
     const [formData, setFormData] = useState({
-        
-            firstName: '',
-            lastName:'',
+
+        firstName: '',
+        lastName: '',
         emailId: '',
         collegeId: 21038201000,
-        password:''
+        password: ''
     })
     function handleShow() {
         if (show === 1) {
@@ -19,10 +22,41 @@ export default function Signup() {
             setShow(1)
         }
     }
+    function handleSubmit() {
+        const postData = {
+            name:(formData.firstName.charAt(0).toUpperCase())+formData.firstName.slice(1)+' '+(formData.lastName.charAt(0).toUpperCase())+formData.lastName.slice(1),
+            email: formData.emailId,
+            collegeId: formData.collegeId,
+            password: formData.password
+        }
+        axios({
+            method: "post",
+            url: "https://college-event-management-backend-production-1e34.up.railway.app/api/auth/signup",
+            data: postData,
+            headers: { "Content-Type": "application/json" },
+        })
+            .then(function (response) {
+                //handle success
+                console.log(response.data);
+                if (response.data.statusCode === 200) {
+                    localStorage.setItem('adminLogged', false)
+                    localStorage.setItem('userLogged', true)
+                    window.location.href = '/home'
+                    console.log("200",response.data.message)
+
+                } else {
+                    console.log(response.data.message)
+
+                }
+            })
+            .catch(function (response) {
+                //handle error
+                console.log(response);
+            });
+    }
     return (
         <>
-
-            <div className="min-w-screen min-h-screen bg-gradient-to-tl from-green-400 to-indigo-900  flex items-center justify-center px-5 py-5">
+            {adminLogin === 'true' ? <Navigate to='/admin/dashboard' /> : userLogged === 'true' ? <Navigate to='/home' /> : <div className="min-w-screen min-h-screen bg-gradient-to-tl from-green-400 to-indigo-900  flex items-center justify-center px-5 py-5">
                 <div className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden" style={{
                     maxWidth: '1000px'
                 }}>
@@ -47,8 +81,8 @@ export default function Signup() {
                                         <label htmlFor="" className="text-xs font-semibold px-1">First name</label>
                                         <div className="flex">
                                             <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="fa-solid fa-user"></i></div>
-                                            <input type="text" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="John" onChange={(e)=>{
-                                                setFormData({...formData,firstName:e.target.value} )
+                                            <input type="text" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="John" onChange={(e) => {
+                                                setFormData({ ...formData, firstName: e.target.value })
                                             }} value={formData.firstName} />
                                         </div>
                                     </div>
@@ -56,9 +90,9 @@ export default function Signup() {
                                         <label htmlFor="" className="text-xs font-semibold px-1">Last name</label>
                                         <div className="flex">
                                             <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="fa-solid fa-user"></i></div>
-                                            <input type="text" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Smith" onChange={(e)=>{
-                                                setFormData({...formData,lastName:e.target.value} )
-                                            }} value={formData.lastName}/>
+                                            <input type="text" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Smith" onChange={(e) => {
+                                                setFormData({ ...formData, lastName: e.target.value })
+                                            }} value={formData.lastName} />
                                         </div>
                                     </div>
                                 </div>
@@ -67,9 +101,9 @@ export default function Signup() {
                                         <label htmlFor="cId" className="text-xs font-semibold px-1">College ID</label>
                                         <div className="flex">
                                             <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="fa-solid fa-id-badge"></i></div>
-                                            <input type="number" name="cId" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="21038201000XX" onChange={(e)=>{
-                                                setFormData({...formData,collegeId:e.target.value} )
-                                            }} value={formData.collegeId}/>
+                                            <input type="number" name="cId" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="21038201000XX" onChange={(e) => {
+                                                setFormData({ ...formData, collegeId: e.target.value })
+                                            }} value={formData.collegeId} />
                                         </div>
                                     </div>
                                 </div>
@@ -78,19 +112,19 @@ export default function Signup() {
                                         <label htmlFor="email" className="text-xs font-semibold px-1">Email ID</label>
                                         <div className="flex">
                                             <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                                            <i className="fa-solid  fa-envelope"></i>
+                                                <i className="fa-solid  fa-envelope"></i>
                                             </div>
-                                            <input type="email" name="email" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="johnsmith@gmail.com" onChange={(e)=>{
-                                                setFormData({...formData,emailId:e.target.value} )
-                                            }} value={formData.emailId}/>
+                                            <input type="email" name="email" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="johnsmith@gmail.com" onChange={(e) => {
+                                                setFormData({ ...formData, emailId: e.target.value })
+                                            }} value={formData.emailId} />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="flex mx-6">
                                     <div className="w-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="fa-solid fa-lock z-10"></i></div>
-                                    <input type={show ? 'text' : 'password'} name="password" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="************"  onChange={(e)=>{
-                                                setFormData({...formData,password:e.target.value} )
-                                            }} value={formData.password} />
+                                    <input type={show ? 'text' : 'password'} name="password" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="************" onChange={(e) => {
+                                        setFormData({ ...formData, password: e.target.value })
+                                    }} value={formData.password} />
                                     <div className="w-10 border-2 px-1 text-center flex items-center justify-center rounded-lg border-gray-200 outline-none focus:border-indigo-500 bg-white" onClick={handleShow}>
                                         {
                                             show ? <i className="fa-solid fa-eye-slash"></i> : <i className="fa-solid fa-eye"></i>
@@ -99,7 +133,7 @@ export default function Signup() {
                                 </div>
                                 <div className="flex -mx-3">
                                     <div className="w-full px-3 mb-5 mt-5">
-                                        <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold" onClick={()=>{console.log(formData)}}>REGISTER NOW</button>
+                                        <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold" onClick={handleSubmit}>REGISTER NOW</button>
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +142,9 @@ export default function Signup() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>}
+
+
 
         </>
     )

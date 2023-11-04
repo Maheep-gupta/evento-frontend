@@ -19,9 +19,6 @@ import ResetPassword from "./components/ResetPassword";
 
 function App() {
   // This will get true after a successfull login of of the Admin
-  localStorage.setItem('adminLogged', false)
-  const adminLogin = localStorage.getItem('adminLogged')
-  console.log("App",adminLogin);
   return (
     
     <>

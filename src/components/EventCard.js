@@ -1,6 +1,9 @@
 import React from 'react'
 
-function EventCard() {
+function EventCard({eventName,date,eventCategory}) {
+    // console.log("name",eventName);
+    // console.log("date",date);
+    // console.log("eventType",eventCategory);
     return (
         <div className="relative flex w-full max-w-[12rem] lg:max-w-[15rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg mt-5 mb-4">
             <div className="relative mx-2 mt-2 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
@@ -30,14 +33,14 @@ function EventCard() {
             <div className="p-6 pb-0">
                 <div className="mb-3 flex items-center justify-between">
                     <h5 className="block font-sans text-l font-medium leading-snug tracking-normal text-blue-gray-900 antialiased">
-                        Event 1
+                        {(eventName)}
                     </h5>
                 </div>
-                <p className="block font-sans text-base font-light leading-relaxed text-gray-700 antialiased">
-                    <p className='font-sans'>Date:-12/07/2002</p>
+                <div className="block font-sans text-base font-light leading-relaxed text-gray-700 antialiased">
+                    <p className='font-sans'>Date:-{date}</p>
                     <p className='font-sans'>Venue:-College Campus</p>
-                    <p className='font-sans'>Event Category:-Coding</p>
-                </p>
+                    <p className='font-sans'>Event Category:-{ eventCategory}</p>
+                </div>
             </div>
             <div className="p-2">
                 <button

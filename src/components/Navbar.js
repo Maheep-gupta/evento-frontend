@@ -29,12 +29,6 @@ function Navbar({ title }) {
                         </div>
                     </Link>
                 </div>
-
-
-
-
-
-
             </div>
             <div className={`flex h-screen ml-4 mt-4 mb-4 flex-col items-center w-48 overflow-hidden text-gray-700 bg-gray-100 rounded ${mobileNav === true ? 'block absolute z-10 mt-[3rem] ml-0 h-1/2 animate-fade-right' : 'hidden'} lg:flex lg:sticky top-0 lg:h`} >
                 <Link className="flex items-center w-full px-3 mt-3" to="/">
