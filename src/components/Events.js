@@ -5,7 +5,6 @@ import axios from "axios";
 import EventJSON from '../utils/EventJSON'
 
 function Events() {
-
   const [Events, setEvents] = useState(EventJSON)
   const [codingEvents, setCodingEvents] = useState(EventJSON)
   const [sportsEvents, setSportsEvents] = useState(EventJSON)
@@ -42,14 +41,14 @@ function Events() {
 
       <div className="flex h-full flex-col lg:flex-row  ">
         <Navbar title="home" />
-        <div className="lg:w-full text-white mt-4 ml-4 mr-2">
+        <div className="lg:w-screen text-white mt-4 ml-4 mr-2">
           <div className="popular-events">
             <p className="flex text-4xl bg-white text-black font-medium p-5 lg:w-full rounded-xl "><svg className="pr-2" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M153.6 29.9l16-21.3C173.6 3.2 180 0 186.7 0C198.4 0 208 9.6 208 21.3V43.5c0 13.1 5.4 25.7 14.9 34.7L307.6 159C356.4 205.6 384 270.2 384 337.7C384 434 306 512 209.7 512H192C86 512 0 426 0 320v-3.8c0-48.8 19.4-95.6 53.9-130.1l3.5-3.5c4.2-4.2 10-6.6 16-6.6C85.9 176 96 186.1 96 198.6V288c0 35.3 28.7 64 64 64s64-28.7 64-64v-3.9c0-18-7.2-35.3-19.9-48l-38.6-38.6c-24-24-37.5-56.7-37.5-90.7c0-27.7 9-54.8 25.6-76.9z" /></svg> Popular Events</p>
             <div className="event-main flex flex-wrap justify-evenly">
               {Events.map((ele) => {
                 return (
 
-                  <EventCard key={ele._id} eventName={ele.eventName.charAt(0).toUpperCase() + ele.eventName.slice(1)} date={ele.startDate} eventCategory={ele.eventType} />
+                  <EventCard key={ele._id} dataToFetch={ele.eventName} eventName={ele.eventName.charAt(0).toUpperCase() + ele.eventName.slice(1)} date={ele.startDate} eventCategory={ele.eventType} />
                 )
               })}
 
@@ -62,7 +61,7 @@ function Events() {
               {codingEvents.map((ele) => {
                 return (
 
-                  <EventCard key={ele._id} eventName={ele.eventName.charAt(0).toUpperCase() + ele.eventName.slice(1)} date={ele.startDate} eventCategory={ele.eventType} />
+                  <EventCard key={ele._id} dataToFetch={ele.eventName} eventName={ele.eventName.charAt(0).toUpperCase() + ele.eventName.slice(1)} date={ele.startDate} eventCategory={ele.eventType} />
                 )
               })}
             </div>
@@ -74,7 +73,7 @@ function Events() {
             {sportsEvents.map((ele) => {
                 return (
 
-                  <EventCard key={ele._id} eventName={ele.eventName.charAt(0).toUpperCase() + ele.eventName.slice(1)} date={ele.startDate} eventCategory={ele.eventType} />
+                  <EventCard key={ele._id} dataToFetch={ele.eventName} eventName={ele.eventName.charAt(0).toUpperCase() + ele.eventName.slice(1)} date={ele.startDate} eventCategory={ele.eventType} />
                 )
               })}
             </div>

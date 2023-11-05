@@ -1,10 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
-function EventCard({eventName,date,eventCategory}) {
-    // console.log("name",eventName);
+function EventCard({ dataToFetch ,eventName,date,eventCategory}) {
+    // console.log(dataToFetch);
     // console.log("date",date);
     // console.log("eventType",eventCategory);
     return (
+        <Link to={`/eventDetail/${dataToFetch}`}>
+            
         <div className="relative flex w-full max-w-[12rem] lg:max-w-[15rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg mt-5 mb-4">
             <div className="relative mx-2 mt-2 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
                 <img
@@ -52,6 +55,7 @@ function EventCard({eventName,date,eventCategory}) {
                 </button>
             </div>
         </div>
+        </Link>
     )
 }
 

@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import './App.css';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -18,7 +18,9 @@ import OtpPage from "./components/OtpPage";
 import ResetPassword from "./components/ResetPassword";
 
 function App() {
-  // This will get true after a successfull login of of the Admin
+  const userLogged = localStorage.getItem('userLogged')
+  const adminLogin = localStorage.getItem('adminLogged')
+
   return (
     
     <>
@@ -27,15 +29,16 @@ function App() {
         <Route path="/" exact element={<HomePage />} />
         <Route path="/auth/login/" exact element={<Login />} />
         <Route path="/auth/signup/" exact element={<Signup />} />
-        <Route path="/home" exact element={<Events />} />
-        <Route path="/search" exact element={<Search />} />
-        <Route path="/participatedEvent" exact element={<ParticipatedEvents />} />
-        <Route path="/upcomingEvent" exact element={<UpcomingEvent />} />
-        <Route path="/user/account" exact element={<Account />} />
-        <Route path="/eventDetail" exact element={<EventsDetail />} />
-        <Route path="/forgetPassword" exact element={<ForgetPassword />} />
-        <Route path="/verify" exact element={<OtpPage />} />
-        <Route path="/resetPassword" exact element={<ResetPassword />} />
+
+        <Route path="/home" exact element={ userLogged==='true' ? <Events /> :<Navigate to='/'/>} />
+        <Route path="/search" exact element={userLogged==='true' ?<Search />:<Navigate to='/'/>} />
+        <Route path="/participatedEvent" exact element={userLogged==='true' ?<ParticipatedEvents />:<Navigate to='/'/>} />
+        <Route path="/upcomingEvent" exact element={userLogged==='true' ?<UpcomingEvent />:<Navigate to='/'/>} />
+        <Route path="/user/account" exact element={userLogged==='true' || adminLogin==='true' ?<Account />:<Navigate to='/'/>} />
+        <Route path="/forgetPassword" exact element={userLogged==='true' ?<ForgetPassword />:<Navigate to='/'/>} />
+        <Route path="/verify" exact element={userLogged==='true' ?<OtpPage />:<Navigate to='/'/>} />
+        <Route path="/resetPassword" exact element={userLogged==='true' ?<ResetPassword />:<Navigate to='/'/>} />
+        <Route path="/eventDetail/:id" exact element={userLogged==='true'|| adminLogin==='true' ?<EventsDetail />:<Navigate to='/'/>} />
 
         
         {/* Admin */}

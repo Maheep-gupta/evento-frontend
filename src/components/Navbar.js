@@ -36,7 +36,6 @@ function Navbar({ title }) {
                         <img src={require('../assets/evento-black.png')} alt='EventO' />
                     </div>
                 </Link>
-                {console.log(admin)}
                 {admin === 'true' ? <AdminNav title={title} /> : <UserNav title={title} />}
                 {/* Account */}
                 <Link className="flex items-center justify-center w-full h-16 mt-auto bg-gray-200 hover:bg-gray-300 text-black" to="/user/account">

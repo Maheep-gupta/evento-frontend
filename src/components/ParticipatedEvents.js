@@ -5,7 +5,7 @@ import EventCard from './EventCard'
 function ParticipatedEvents() {
     return (
         <>
-            <div className='flex lg:h-full h-full w-screen flex-col lg:flex-row '>
+            <div className='flex lg:h-full h-full w-full flex-col lg:flex-row '>
 
                 <Navbar title='pe' />
                 <div className='lg:w-full text-white mt-4 ml-4 mr-2'>
