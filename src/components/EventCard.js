@@ -1,10 +1,8 @@
-import React from 'react'
+import React, {  } from 'react'
 import { Link } from 'react-router-dom';
 
-function EventCard({ dataToFetch ,eventName,date,eventCategory}) {
-    // console.log(dataToFetch);
-    // console.log("date",date);
-    // console.log("eventType",eventCategory);
+function EventCard({ dataToFetch, eventName, date, eventCategory }) {
+    
     return (
         <Link to={`/eventDetail/${dataToFetch}`}>
             

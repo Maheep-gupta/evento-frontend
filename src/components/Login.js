@@ -26,7 +26,6 @@ export default function Login() {
             setShow(1)
         }
     }
-    console.log(formData);
     function handleSubmit() {
         if (formData.collegeId === 21038201000 || formData.password === '') {
             alert("Please fill all the details")
@@ -39,23 +38,23 @@ export default function Login() {
             })
                 .then(function (response) {
                     //handle success
-                    console.log(response.data.role);
                     if (response.data.statusCode === 200) {
                         if (response.data.role === 'Admin') {
                             localStorage.setItem('adminLogged', true)
                             localStorage.setItem('userLogged', false)
+                            localStorage.setItem('id',formData.collegeId)
                             setActivateAlert(true)
-                            setAlertMsg({ ...alertMsg, statusCode: response.data.statusCode })
-                            setAlertMsg({ ...alertMsg, msg: response.data.message })
+                            setAlertMsg({ statusCode: response.data.statusCode, msg: response.data.message });
+                            
                             window.location.href = '/admin/dashboard'
                         } else {
                             localStorage.setItem('adminLogged', false)
                             localStorage.setItem('userLogged', true)
+                            localStorage.setItem('id',formData.collegeId)
                             setActivateAlert(true)
-                            console.log("alert msg", alertMsg);
-                            setAlertMsg({ ...alertMsg, statusCode: response.data.statusCode })
-                            setAlertMsg({ ...alertMsg, msg: response.data.message })
+                            setAlertMsg({ statusCode: response.data.statusCode, msg: response.data.message });
                             window.location.href = '/home'
+                            
                         }
                     } else {
                         setActivateAlert(true)
@@ -66,7 +65,7 @@ export default function Login() {
                 })
                 .catch(function (response) {
                     //handle error
-                    console.log(response);
+                    console.error(response);
                 });
         }
 

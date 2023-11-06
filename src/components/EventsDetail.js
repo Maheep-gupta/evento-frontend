@@ -3,15 +3,42 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import EventJSON from '../utils/EventJSON'
 import { useParams } from "react-router-dom";
+import Alerts from "./Alerts";
 
 
 function EventsDetail() {
   const { id } = useParams()
-  console.log(id);
+
 
   const [Events, setEvents] = useState(EventJSON)
+  const [postData, setPostData] = useState('')
   const [eventDetails, setEventDetails] = useState(Events)
+  const [ActivateAlert, setActivateAlert] = useState(false)
+  const [alertMsg, setAlertMsg] = useState({
+    statusCode: '',
+    msg: ''
+  })
 
+  const userId = localStorage.getItem('id')
+  function handleRegister() {
+    const postJsonData = {
+      eventId: postData
+    }
+    axios({
+      method: "post",
+      url: `https://college-event-management-backend-production-1e34.up.railway.app/api/event/register/${userId}`,
+      data: postJsonData,
+      headers: { "Content-Type": "application/json" },
+    }
+    )
+      .then((response) => {
+        setActivateAlert(true)
+        setAlertMsg({ statusCode: response.data.statusCode, msg: response.data.message });
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  }
 
   useEffect(() => {
     axios.get("https://college-event-management-backend-production-1e34.up.railway.app/api/event/getEvent")
@@ -24,21 +51,21 @@ function EventsDetail() {
 
   }, []);
   useEffect(() => {
-    console.log("Events",Events);
     if (Events.length > 2) {
 
       const EventDeatils = Events.find((ele) => {
         return ele.eventName === id
       })
       setEventDetails(EventDeatils)
+      setPostData(EventDeatils._id)
+
     }
 
-  }, [Events])
-  console.log("Event Details", eventDetails);
+  }, [Events, id])
   return (
     <div className="flex h-full  ">
       <Navbar title="event" />
-      <div className=" w-full text-black">
+      <div className=" w-full text-black flex flex-col">
 
 
         <div className="relative z-20 flex items-center overflow-hidden bg-white white:bg-white-800 mt-5 mx-5 my-5 rounded-2xl">
@@ -54,53 +81,53 @@ function EventsDetail() {
 
               </h1>
 
-              <div class="pt-5">
-                <details class="group">
-                  <summary class="flex ring-2 ring-gray-300 rounded-xl p-2 mr-6 justify-between items-center font-medium cursor-pointer list-none">
+              <div className="pt-5">
+                <details className="group">
+                  <summary className="flex ring-2 ring-gray-300 rounded-xl p-2 mr-6 justify-between items-center font-medium cursor-pointer list-none">
                     <span className="text-l"> About</span>
-                    <span class="transition group-open:rotate-180">
+                    <span className="transition group-open:rotate-180">
                       <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
                       </svg>
                     </span>
                   </summary>
-                  <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
+                  <p className="text-neutral-600 mt-3 group-open:animate-fadeIn">
                     {eventDetails.eventDetail}
                   </p>
                 </details>
               </div>
-              <details class="group pt-5">
-                <summary class="flex ring-2 ring-gray-300 rounded-xl p-2 mr-6 justify-between items-center font-medium cursor-pointer list-none">
+              <details className="group pt-5">
+                <summary className="flex ring-2 ring-gray-300 rounded-xl p-2 mr-6 justify-between items-center font-medium cursor-pointer list-none">
                   <span className="text-l"> Start Date</span>
-                  <span class="transition group-open:rotate-180">
+                  <span className="transition group-open:rotate-180">
                     <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
                     </svg>
                   </span>
                 </summary>
-                <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
+                <p className="text-neutral-600 mt-3 group-open:animate-fadeIn">
                   {eventDetails.startDate}
                 </p>
               </details>
-              <details class="group pt-5">
-                <summary class="flex ring-2 ring-gray-300 rounded-xl p-2 mr-6 justify-between items-center font-medium cursor-pointer list-none">
+              <details className="group pt-5">
+                <summary className="flex ring-2 ring-gray-300 rounded-xl p-2 mr-6 justify-between items-center font-medium cursor-pointer list-none">
                   <span className="text-l"> Venue</span>
-                  <span class="transition group-open:rotate-180">
+                  <span className="transition group-open:rotate-180">
                     <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
                     </svg>
                   </span>
                 </summary>
-                <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
+                <p className="text-neutral-600 mt-3 group-open:animate-fadeIn">
                   College Campus
                 </p>
               </details>
-              <details class="group pt-5">
-                <summary class="flex ring-2 ring-gray-300 rounded-xl p-2 mr-6 justify-between items-center font-medium cursor-pointer list-none">
+              <details className="group pt-5">
+                <summary className="flex ring-2 ring-gray-300 rounded-xl p-2 mr-6 justify-between items-center font-medium cursor-pointer list-none">
                   <span className="text-l"> Event Coordinators</span>
-                  <span class="transition group-open:rotate-180">
+                  <span className="transition group-open:rotate-180">
                     <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
                     </svg>
                   </span>
                 </summary>
-                <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
+                <p className="text-neutral-600 mt-3 group-open:animate-fadeIn">
                   {eventDetails.eventCoordinators}
                 </p>
               </details>
@@ -127,7 +154,7 @@ function EventsDetail() {
 
 
               <div className="flex mt-8">
-                <button
+                <button onClick={handleRegister}
                   className=" block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-900 focus:bg-indigo-900 text-black rounded-lg px-2 py-2 font-semibold my-2"
                   type="button"
                   data-ripple-light="true"
@@ -146,8 +173,8 @@ function EventsDetail() {
             </div>
           </div>
         </div>
+      {ActivateAlert === true ? alertMsg.statusCode === 200 ? <Alerts msg={alertMsg.msg} type={200} /> : <Alerts msg={alertMsg.msg} type={400} /> : ''}
       </div>
-
     </div>
   );
 }

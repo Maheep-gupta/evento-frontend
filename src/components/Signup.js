@@ -46,27 +46,23 @@ export default function Signup() {
             })
                 .then(function (response) {
                     //handle success
-                    console.log(response.data);
                     if (response.data.statusCode === 200) {
                         localStorage.setItem('adminLogged', false)
                         localStorage.setItem('userLogged', true)
-                        console.log("200", response.data.message)
+                        localStorage.setItem('id',formData.collegeId)
                         setActivateAlert(true)
-                        setAlertMsg({ ...alertMsg, statusCode: response.data.statusCode })
-                        setAlertMsg({ ...alertMsg, msg: response.data.message })
+                        setAlertMsg({ statusCode: response.data.statusCode, msg: response.data.message });
                         window.location.href = '/home'
                     } else {
                         setActivateAlert(true)
-                        console.log("alert msg",alertMsg);
-                        setAlertMsg({ ...alertMsg, statusCode: response.data.statusCode })
-                        setAlertMsg({ ...alertMsg, msg: response.data.message })
+                        setAlertMsg({ statusCode: response.data.statusCode, msg: response.data.message });
 
 
                     }
                 })
                 .catch(function (response) {
                     //handle error
-                    console.log(response);
+                    console.error(response);
                 });
         }
     }

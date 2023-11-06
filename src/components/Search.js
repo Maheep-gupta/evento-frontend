@@ -7,7 +7,7 @@ import EventJSON from '../utils/EventJSON'
 
 function Search() {
     const [Events, setEvents] = useState(EventJSON)
-    const [search, setSearch] = useState(null)
+    const [search, setSearch] = useState('')
     
     useEffect(() => {
         axios.get("https://college-event-management-backend-production-1e34.up.railway.app/api/event/getEvent")
@@ -19,7 +19,7 @@ function Search() {
             })
 
     }, []);
-    console.log(search)
+    
 
     return (
         <>
@@ -44,12 +44,18 @@ function Search() {
 
                         <div className="mt-5"><div className="participated-events mt-4">
                             <div className="event-main flex flex-wrap justify-evenly">
-                                {Events.map((ele)=>{
-                                    return(
+                                {
+                                    search.length>0?
 
-                                        ele.eventName.toLowerCase().includes(search)||ele.eventType.toLowerCase().includes(search)?<EventCard key={ele._id} dataToFetch={ele.eventName} eventName={ele.eventName.charAt(0).toUpperCase() + ele.eventName.slice(1)} date={ele.startDate} eventCategory={ele.eventType} />:''
-                                    )
-                                })}
+                                    Events.map((ele)=>{
+                                        return (
+                                            
+    
+                                            ele.eventName.toLowerCase().includes(search) || ele.eventType.toLowerCase().includes(search) ? <EventCard key={ele._id} dataToFetch={ele.eventName} eventName={ele.eventName.charAt(0).toUpperCase() + ele.eventName.slice(1)} date={ele.startDate} eventCategory={ele.eventType} /> :
+                                                ''
+                                        )
+                                    }):''
+                                }
                             </div>
                         </div>
                         </div>

@@ -22,7 +22,7 @@ function CompletedEvents() {
   }, []);
   useEffect(() => {
     const completedEvent = Events.filter((ele) => {
-      return ele.eventStatus === 'Completed'
+      return ele.eventStatus === 'completed'
     })
     setCompletedEvent(completedEvent)
   }, [Events])
