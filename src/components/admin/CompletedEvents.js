@@ -36,13 +36,14 @@ function CompletedEvents() {
             <div className="participated-events mt-4">
               <p className="text-xl bg-white text-black font-medium p-3 lg:w-full rounded-xl "> Following Events have Successfully Completed</p>
               <div className="event-main flex flex-wrap justify-evenly">
-
-                {CompletedEvent.map((ele) => {
+                {CompletedEvent.length > 0 ?
+                CompletedEvent.map((ele) => {
                   return (
                     <EventCard key={ele._id} dataToFetch={ele.eventName} eventName={ele.eventName.charAt(0).toUpperCase() + ele.eventName.slice(1)} date={ele.startDate} eventCategory={ele.eventType} />
                   )
 
-                })}
+                }):"No Events"
+}
               </div>
             </div>
           </div>

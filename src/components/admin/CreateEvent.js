@@ -37,15 +37,11 @@ function CreateEvent() {
           if (response.data.statusCode === 200) {
             console.log("200", response.data.statusCode)
             setActivateAlert(true)
-            setAlertMsg({ ...alertMsg, msg: response.data.message })
-            setAlertMsg({ ...alertMsg, statusCode: response.data.statusCode })
+            setAlertMsg({ statusCode: response.data.statusCode, msg: response.data.message });
           } else {
             setActivateAlert(true)
             console.log("alert msg", alertMsg);
-            setAlertMsg({ ...alertMsg, msg: response.data.message })
-            setAlertMsg({ ...alertMsg, statusCode: response.data.statusCode })
-
-
+            setAlertMsg({ statusCode: response.data.statusCode, msg: response.data.message });
           }
         })
         .catch(function (response) {
@@ -93,9 +89,9 @@ function CreateEvent() {
                   </label>
                   <select className="w-full outline-none focus:outline-none p-2 bg-white rounded-md border border-[#e0e0e0]" value={createEvent.eventType} onChange={(e) => { setCreateEvent({ ...createEvent, eventType: e.target.value }) }}
                   >
-                    <option value="coding">Coding</option>
-                    <option value="sport">Sport</option>
-                    <option value="culture">Culture</option>
+                    <option value="Coding">Coding</option>
+                    <option value="Sport">Sport</option>
+                    <option value="Culture">Culture</option>
                   </select>
                 </div>
                 <div className="mb-5">
@@ -107,7 +103,6 @@ function CreateEvent() {
                   </label>
                   <select className="w-full outline-none focus:outline-none p-2 bg-white rounded-md border border-[#e0e0e0]" value={createEvent.eventStatus} onChange={(e) => { setCreateEvent({ ...createEvent, eventStatus: e.target.value }) }}
                   >
-                    <option value="Going" title="Going to start in less than a week">Going to start</option>
                     <option value="Upcoming" title="Going to start in less than a month">Upcoming</option>
                   </select>
                 </div>

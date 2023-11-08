@@ -25,14 +25,14 @@ function Events() {
 
   useEffect(() => {
     const CodingEvents = Events.filter((ele) => {
-      return ele.eventType === 'Coding'
+      return ele.eventType === 'Coding' && ele.eventStatus!=='Completed'
     })
     setCodingEvents(CodingEvents)
   }, [Events])
 
   useEffect(() => {
     const SportsEvents = Events.filter((ele) => {
-      return ele.eventType === 'Sports'
+      return ele.eventType === 'Sports' && ele.eventStatus!=='Completed'
     })
     setSportsEvents(SportsEvents)
   }, [Events])

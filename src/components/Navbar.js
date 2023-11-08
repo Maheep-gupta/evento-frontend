@@ -30,7 +30,7 @@ function Navbar({ title }) {
                     </Link>
                 </div>
             </div>
-            <div className={`flex h-[100vh] ml-4 flex-col gap-y-6 items-center w-48 overflow-hidden text-gray-700 bg-gray-100 rounded ${mobileNav === true ? 'block absolute z-10 mt-[3rem] ml-0 h-1/2 animate-fade-right' : 'hidden'} lg:flex lg:sticky top-0 lg:h`} >
+            <div className={`flex lg:h-[100vh] h-[100vh/2] ml-4 flex-col gap-y-6 items-center w-48 overflow-hidden text-gray-700 bg-gray-100 rounded ${mobileNav === true ? 'block absolute z-10 mt-[3rem] ml-0 h-1/2 animate-fade-right' : 'hidden'} lg:flex lg:sticky top-0 lg:h`} >
                 <Link className="flex items-center w-full px-3 mt-3" to="/">
                     <div className=" h-10 fill-current">
                         <img src={require('../assets/evento-black.png')} alt='EventO' />

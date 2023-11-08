@@ -24,7 +24,7 @@ function App() {
   return (
     
     <>
-      {document.body.setAttribute('class','bg-gradient-to-tl from-green-400 to-indigo-900')}
+      {document.body.setAttribute('class','bg-cover bg-no-repeat bg-gradient-to-tl from-green-400 to-indigo-900')}
       <Routes>
         <Route path="/" exact element={<HomePage />} />
         <Route path="/auth/login/" exact element={<Login />} />

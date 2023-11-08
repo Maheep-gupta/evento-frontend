@@ -30,7 +30,7 @@ function UpcomingEvent() {
             <div className='flex lg:h-full h-full w-full flex-col lg:flex-row '>
 
                 <Navbar title='ue' />
-                <div className='lg:w-full text-white mt-4 ml-4 mr-2'>
+                <div className='lg:w-full md:h-screen lg:h-full text-white mt-4 ml-4 mr-2'>
                     <div className="participated-events mt-4">
                         <p className="text-xl bg-white text-black font-medium p-3 lg:w-full rounded-xl "> These are some Upcoming Events</p>
                         <div className="event-main flex flex-wrap justify-evenly">
