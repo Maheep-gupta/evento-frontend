@@ -51,7 +51,9 @@ function Search() {
                                         return (
                                             
     
-                                            ele.eventName.toLowerCase().includes(search) || ele.eventType.toLowerCase().includes(search) ? <EventCard key={ele._id} dataToFetch={ele.eventName} eventName={ele.eventName.charAt(0).toUpperCase() + ele.eventName.slice(1)} date={ele.startDate} eventCategory={ele.eventType} /> :
+                                            ele.eventName.toLowerCase().includes(search) || ele.eventType.toLowerCase().includes(search) ?
+                                            <EventCard key={ele._id} dataToFetch={ele.eventName} eventName={ele.eventName.charAt(0).toUpperCase() + ele.eventName.slice(1)} date={ele.startDate} eventCategory={ele.eventType} eventImage={ele.eventImage} />
+                                                :
                                                 ''
                                         )
                                     }):''

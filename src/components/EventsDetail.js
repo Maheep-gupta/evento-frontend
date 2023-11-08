@@ -145,7 +145,7 @@ function EventsDetail() {
             </div>
             <div className="relative hidden lg:block lg:w-3/5 ">
               <img className="rounded-xl "
-                src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"
+                src={eventDetails.eventImage}
                 alt="ui/ux review check"
               />
             </div>

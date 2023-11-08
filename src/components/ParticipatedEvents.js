@@ -33,7 +33,7 @@ function ParticipatedEvents() {
                                 participated.map((ele) => {
                                     return (
                                     ele!==null?
-                                    <EventCard key={ele._id} dataToFetch={ele.eventName} eventName={ele.eventName.charAt(0).toUpperCase() + ele.eventName.slice(1)} date={ele.startDate} eventCategory={ele.eventType}  />:''
+                                    <EventCard key={ele._id} dataToFetch={ele.eventName} eventName={ele.eventName.charAt(0).toUpperCase() + ele.eventName.slice(1)} date={ele.startDate} eventCategory={ele.eventType} eventImage={ele.eventImage} />:''
                                 )
                             }):'You have not Particiapated In any Event'}
                         </div>
