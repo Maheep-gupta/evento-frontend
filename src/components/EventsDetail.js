@@ -73,8 +73,8 @@ function EventsDetail() {
       <Navbar title="event" />
       <div className=" text-black flex flex-col w-full h-screen ">
         <div className="relative  flex items-center overflow-hidden bg-white white:bg-white-800 mt-5 mx-5 my-5 rounded-2xl ">
-          <div className="container relative flex px-6 py-16 mx-auto justify-center items-center">
-            <div className="relative  flex flex-col sm:w-2/3 lg:w-2/5">
+          <div className="container relative flex px-6 py-16 mx-auto items-center">
+            <div className="relative  flex flex-col md:w-full lg:w-2/3">
               <span className="w-20 h-2 mb-4 bg-gray-800 dark:bg-black"></span>
               <h1 className="text-l mb-12 font-semibold leading-none text-gray-800 uppercase font-bebas-neue sm:text-l dark:text-black">
                 About the Event
@@ -85,20 +85,18 @@ function EventsDetail() {
 
               </h1>
 
-              <div className="pt-5">
-                <details className="group">
-                  <summary className="flex ring-2 ring-gray-300 rounded-xl p-2 mr-6 justify-between items-center font-medium cursor-pointer list-none">
-                    <span className="text-l"> About</span>
-                    <span className="transition group-open:rotate-180">
-                      <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
-                      </svg>
-                    </span>
-                  </summary>
-                  <p className="text-neutral-600 mt-3 group-open:animate-fadeIn">
-                    {eventDetails.eventDetail}
-                  </p>
-                </details>
-              </div>
+              <details className="group pt-5">
+                <summary className="flex ring-2 ring-gray-300 rounded-xl p-2 mr-6 justify-between items-center font-medium cursor-pointer list-none">
+                  <span className="text-l"> About</span>
+                  <span className="transition group-open:rotate-180">
+                    <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
+                    </svg>
+                  </span>
+                </summary>
+                <p className="text-neutral-600 mt-3 group-open:animate-fadeIn">
+                  {eventDetails.eventDetail}
+                </p>
+              </details>
               <details className="group pt-5">
                 <summary className="flex ring-2 ring-gray-300 rounded-xl p-2 mr-6 justify-between items-center font-medium cursor-pointer list-none">
                   <span className="text-l"> Start Date</span>
@@ -156,7 +154,7 @@ function EventsDetail() {
                     type="button"
                     data-ripple-light="true"
                   >
-                    {alertMsg.statusCode===200?'Registered':'Register'}
+                    {alertMsg.statusCode === 200 ? 'Registered' : 'Register'}
                   </button>
                 </div>}
 
@@ -170,7 +168,7 @@ function EventsDetail() {
             </div>
           </div>
         </div>
-      {ActivateAlert === true ? alertMsg.statusCode === 200 ? <Alerts msg={alertMsg.msg} type={200} /> : <Alerts msg={alertMsg.msg} type={400} /> : ''}
+        {ActivateAlert === true ? alertMsg.statusCode === 200 ? <Alerts msg={alertMsg.msg} type={200} /> : <Alerts msg={alertMsg.msg} type={400} /> : ''}
       </div>
     </div>
   );
