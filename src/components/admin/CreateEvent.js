@@ -15,7 +15,7 @@ function CreateEvent() {
     eventStatus: 'Going',
     eventCoordinators: '',
     participatedStudents: 0,
-    eventImage: 'https://res.cloudinary.com/dedumcwij/image/upload/v1699454163/v4ozfdwfc8yj3gdvrpcd.png'
+    eventImage: ''
   })
   const [ActivateAlert, setActivateAlert] = useState(false)
   const [alertMsg, setAlertMsg] = useState({
