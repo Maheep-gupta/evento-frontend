@@ -134,7 +134,7 @@ export default function Signup() {
                                 </div>
                                 <div className="flex mx-6">
                                     <div className="w-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="fa-solid fa-lock z-10"></i></div>
-                                    <input type={show ? 'text' : 'password'} name="password" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="************" onChange={(e) => {
+                                    <input type={show ? 'text' : 'password'} name="password" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Password" onChange={(e) => {
                                         setFormData({ ...formData, password: e.target.value })
                                     }} value={formData.password} />
                                     <div className="w-10 border-2 px-1 text-center flex items-center justify-center rounded-lg border-gray-200 outline-none focus:border-indigo-500 bg-white" onClick={handleShow}>

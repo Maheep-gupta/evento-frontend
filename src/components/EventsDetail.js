@@ -20,6 +20,8 @@ function EventsDetail() {
   })
 
   const userId = localStorage.getItem('id')
+  const adminLogin = localStorage.getItem('adminLogged')
+
   function handleRegister() {
     const postJsonData = {
       eventId: postData
@@ -51,11 +53,15 @@ function EventsDetail() {
 
   }, []);
   useEffect(() => {
+    console.log(id);
     if (Events.length > 2) {
 
+      console.log(Events);
       const EventDeatils = Events.find((ele) => {
-        return ele.eventName === id
+        console.log(ele);
+        return ele.eventName.trimEnd() === id.trimEnd()
       })
+      console.log(EventDeatils);
       setEventDetails(EventDeatils)
       setPostData(EventDeatils._id)
 
@@ -67,7 +73,7 @@ function EventsDetail() {
       <Navbar title="event" />
       <div className=" text-black flex flex-col w-full h-screen ">
         <div className="relative  flex items-center overflow-hidden bg-white white:bg-white-800 mt-5 mx-5 my-5 rounded-2xl ">
-          <div className="container relative flex px-6 py-16 mx-auto justify-center">
+          <div className="container relative flex px-6 py-16 mx-auto justify-center items-center">
             <div className="relative  flex flex-col sm:w-2/3 lg:w-2/5">
               <span className="w-20 h-2 mb-4 bg-gray-800 dark:bg-black"></span>
               <h1 className="text-l mb-12 font-semibold leading-none text-gray-800 uppercase font-bebas-neue sm:text-l dark:text-black">
@@ -107,6 +113,18 @@ function EventsDetail() {
               </details>
               <details className="group pt-5">
                 <summary className="flex ring-2 ring-gray-300 rounded-xl p-2 mr-6 justify-between items-center font-medium cursor-pointer list-none">
+                  <span className="text-l"> End Date</span>
+                  <span className="transition group-open:rotate-180">
+                    <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
+                    </svg>
+                  </span>
+                </summary>
+                <p className="text-neutral-600 mt-3 group-open:animate-fadeIn">
+                  {eventDetails.endDate}
+                </p>
+              </details>
+              <details className="group pt-5">
+                <summary className="flex ring-2 ring-gray-300 rounded-xl p-2 mr-6 justify-between items-center font-medium cursor-pointer list-none">
                   <span className="text-l"> Venue</span>
                   <span className="transition group-open:rotate-180">
                     <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
@@ -130,16 +148,17 @@ function EventsDetail() {
                 </p>
               </details>
 
+              {adminLogin === 'true' ? null :
 
-              <div className="flex mt-8">
-                <button onClick={handleRegister}
-                  className=" block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-900 focus:bg-indigo-900 text-black rounded-lg px-2 py-2 font-semibold my-2"
-                  type="button"
-                  data-ripple-light="true"
-                >
-                  REGISTER
-                </button>
-              </div>
+                <div className="flex mt-8">
+                  <button onClick={handleRegister}
+                    className=" block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-900 focus:bg-indigo-900 text-black hover:text-white focus:text-white rounded-lg px-2 py-2 font-semibold my-2"
+                    type="button"
+                    data-ripple-light="true"
+                  >
+                    {alertMsg.statusCode===200?'Registered':'Register'}
+                  </button>
+                </div>}
 
 
             </div>

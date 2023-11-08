@@ -6,8 +6,8 @@ function EventCard({ dataToFetch, eventName, date, eventCategory,eventImage }) {
     return (
         <Link to={`/eventDetail/${dataToFetch}`}>
             
-        <div className="relative flex w-full max-w-[12rem] lg:max-w-[15rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg mt-5 mb-4">
-            <div className="relative mx-2 mt-2 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
+        <div className="relative flex w-full max-w-[12rem]  lg:max-w-[15rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg mt-5 mb-4">
+            <div className="relative h-[8rem] lg:h-[10rem] mx-2 mt-2 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
                 <img
                         src={`${eventImage}`}
                     alt="ui/ux review check"

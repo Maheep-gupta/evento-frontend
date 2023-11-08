@@ -9,6 +9,7 @@ function Events() {
   const [codingEvents, setCodingEvents] = useState(EventJSON)
   const [popularEvents, setPopularEvents] = useState(EventJSON)
   const [sportsEvents, setSportsEvents] = useState(EventJSON)
+  const [culturalEvents, setCulturalEvents] = useState(EventJSON)
 
 
   useEffect(() => {
@@ -32,7 +33,7 @@ function Events() {
 
   useEffect(() => {
     const SportsEvents = Events.filter((ele) => {
-      return ele.eventType === 'Sports' && ele.eventStatus!=='Completed'
+      return ele.eventType === 'Sport' && ele.eventStatus!=='Completed'
     })
     setSportsEvents(SportsEvents)
   }, [Events])
@@ -42,6 +43,13 @@ function Events() {
     })
     setPopularEvents(PopularEvents)
   }, [Events])
+  useEffect(() => {
+    const CulturalEvents = Events.filter((ele) => {
+      return  ele.eventType === 'Culture' && ele.eventStatus!=='Completed'
+    })
+    setCulturalEvents(CulturalEvents)
+  }, [Events])
+
 
   return (
     <>
@@ -65,6 +73,18 @@ function Events() {
             <div className="event-main flex flex-wrap justify-evenly">
 
               {codingEvents.map((ele) => {
+                return (
+
+                  <EventCard key={ele._id} dataToFetch={ele.eventName} eventName={ele.eventName.charAt(0).toUpperCase() + ele.eventName.slice(1)} date={ele.startDate} eventCategory={ele.eventType} eventImage={ele.eventImage} />
+                )
+              })}
+            </div>
+          </div>
+          <div className="coding-events mt-4">
+            <p className=" flex text-4xl bg-white text-black font-medium p-5 lg:w-full rounded-xl "><svg className="pr-2" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z" /></svg> Cultural Events</p>
+            <div className="event-main flex flex-wrap justify-evenly">
+
+              {culturalEvents.map((ele) => {
                 return (
 
                   <EventCard key={ele._id} dataToFetch={ele.eventName} eventName={ele.eventName.charAt(0).toUpperCase() + ele.eventName.slice(1)} date={ele.startDate} eventCategory={ele.eventType} eventImage={ele.eventImage} />
