@@ -12,7 +12,7 @@ function CreateEvent() {
     startDate: '',
     endDate: '',
     eventdetails: '',
-    eventStatus: 'Going',
+    eventStatus: 'Upcoming',
     eventCoordinators: '',
     participatedStudents: 0,
     eventImage: ''
