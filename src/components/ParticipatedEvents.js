@@ -8,7 +8,7 @@ function ParticipatedEvents() {
     const [participated, setParticipated] = useState([])
 
     useEffect(() => {
-        axios.get(`https://college-event-management-backend-production-1e34.up.railway.app/api/event/participatedEvent/${userId}`)
+        axios.get(`http://13.233.23.4:5000/api/event/participatedEvent/${userId}`)
             .then((response) => {;
                 setParticipated(response.data.data)
                 // setCodingEvents(response.data.eventData)

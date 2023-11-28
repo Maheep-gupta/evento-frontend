@@ -44,7 +44,7 @@ function CreateEvent() {
     } else {
       axios({
         method: "post",
-        url: "https://college-event-management-backend-production-1e34.up.railway.app/api/event/createEvent",
+        url: "http://13.233.23.4:5000/api/event/createEvent",
         data: createEvent,
         headers: { "Content-Type": "application/json" },
       })

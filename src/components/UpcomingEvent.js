@@ -9,7 +9,7 @@ function UpcomingEvent() {
     const [UpcomingEvents, setUpcomingEvents] = useState(EventJSON)
 
     useEffect(() => {
-        axios.get("https://college-event-management-backend-production-1e34.up.railway.app/api/event/getEvent")
+        axios.get("http://13.233.23.4:5000/api/event/getEvent")
             .then((response) => {
                 setEvents(response.data.eventData)
             })

@@ -32,7 +32,7 @@ export default function Login() {
         } else {
             axios({
                 method: "post",
-                url: "https://college-event-management-backend-production-1e34.up.railway.app/api/auth/login",
+                url: "http://13.233.23.4:5000/api/auth/login",
                 data: formData,
                 headers: { "Content-Type": "application/json" },
             })

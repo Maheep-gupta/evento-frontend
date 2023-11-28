@@ -11,8 +11,7 @@ function Dashboard() {
     const [completeEventTable, setcompleteEventTable] = useState([])
     const contentRef = createRef();
     useEffect(() => {
-        console.log("kkkk");
-        axios.get("https://college-event-management-backend-production-1e34.up.railway.app/api/dashboard/stats")
+        axios.get("http://13.233.23.4:5000/api/dashboard/stats")
             .then((response) => {
                 console.log(response.data.data);
                 setDashboardData(response.data.data)
