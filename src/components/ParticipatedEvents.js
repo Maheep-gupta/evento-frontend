@@ -8,7 +8,7 @@ function ParticipatedEvents() {
     const [participated, setParticipated] = useState([])
 
     useEffect(() => {
-        axios.get(`http://13.233.23.4:5000/api/event/participatedEvent/${userId}`)
+        axios.get(`https://wax-nostalgic-macaroni.glitch.me/api/event/participatedEvent/${userId}`)
             .then((response) => {;
                 setParticipated(response.data.data)
                 // setCodingEvents(response.data.eventData)

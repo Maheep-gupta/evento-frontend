@@ -11,7 +11,7 @@ function Dashboard() {
     const [completeEventTable, setcompleteEventTable] = useState([])
     const contentRef = createRef();
     useEffect(() => {
-        axios.get("http://13.233.23.4:5000/api/dashboard/stats")
+        axios.get("https://wax-nostalgic-macaroni.glitch.me/api/dashboard/stats")
             .then((response) => {
                 console.log(response.data.data);
                 setDashboardData(response.data.data)

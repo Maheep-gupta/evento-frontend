@@ -44,7 +44,7 @@ function CreateEvent() {
     } else {
       axios({
         method: "post",
-        url: "http://13.233.23.4:5000/api/event/createEvent",
+        url: "https://wax-nostalgic-macaroni.glitch.me/api/event/createEvent",
         data: createEvent,
         headers: { "Content-Type": "application/json" },
       })

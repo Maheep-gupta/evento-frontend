@@ -40,7 +40,7 @@ export default function Signup() {
             }
             axios({
                 method: "post",
-                url: "http://13.233.23.4:5000/api/auth/signup",
+                url: "https://wax-nostalgic-macaroni.glitch.me/api/auth/signup",
                 data: postData,
                 headers: { "Content-Type": "application/json" },
             })

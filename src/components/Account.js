@@ -6,7 +6,7 @@ function Account() {
     const [accountInfo, setAccountInfo] = useState('')
     let userId = localStorage.getItem('id')
     useEffect(() => {
-        axios.get(`http://13.233.23.4:5000/api/auth/account/users/${userId}`)
+        axios.get(`https://wax-nostalgic-macaroni.glitch.me/api/auth/account/users/${userId}`)
             .then((response) => {
                 console.log("res", response.data.data);
                 setAccountInfo(response.data.data)

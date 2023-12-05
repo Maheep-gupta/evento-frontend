@@ -11,7 +11,7 @@ function CompletedEvents() {
   const [CompletedEvent, setCompletedEvent] = useState(EventJSON)
 
   useEffect(() => {
-    axios.get("http://13.233.23.4:5000/api/event/getEvent")
+    axios.get("https://wax-nostalgic-macaroni.glitch.me/api/event/getEvent")
       .then((response) => {
         setEvents(response.data.eventData)
       })

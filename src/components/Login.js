@@ -32,7 +32,7 @@ export default function Login() {
         } else {
             axios({
                 method: "post",
-                url: "http://13.233.23.4:5000/api/auth/login",
+                url: "https://wax-nostalgic-macaroni.glitch.me/api/auth/login",
                 data: formData,
                 headers: { "Content-Type": "application/json" },
             })
