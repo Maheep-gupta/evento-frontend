@@ -3,7 +3,7 @@ import './App.css';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import HomePage from "./components/HomePage";
-import Events from "./components/Events";
+import Events from "./components/EventsHome";
 import Search from "./components/Search";
 import ParticipatedEvents from "./components/ParticipatedEvents";
 import UpcomingEvent from "./components/UpcomingEvent";

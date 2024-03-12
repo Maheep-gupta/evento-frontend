@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import EventJSON from '../utils/EventJSON'
 import EventCard from './EventCard';
 import axios from 'axios';
+import LoadingScreen from './LoadingScreen';
 
 function UpcomingEvent() {
     const [Events, setEvents] = useState(EventJSON)
@@ -34,12 +35,13 @@ function UpcomingEvent() {
                     <div className="participated-events mt-4">
                         <p className="text-xl bg-white text-black font-medium p-3 lg:w-full rounded-xl "> These are some Upcoming Events</p>
                         <div className="event-main flex flex-wrap justify-evenly">
-                            {UpcomingEvents.map((ele) => {
+                            {UpcomingEvents.length!==0?
+                                UpcomingEvents.map((ele) => {
                                 return (
                                     <EventCard key={ele._id} dataToFetch={ele.eventName} eventName={ele.eventName.charAt(0).toUpperCase() + ele.eventName.slice(1)} date={ele.startDate} eventCategory={ele.eventType} eventImage={ele.eventImage} />
                                 )
 
-                            })}
+                            }):<LoadingScreen/>}
                         </div>
                     </div>
                 </div>

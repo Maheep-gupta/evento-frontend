@@ -37,7 +37,7 @@ function Alerts({ msg, type }) {
                         <div class="flex p-4">
                             {msg}
                             <div class="ml-auto" onClick={() => {
-                                setcloseAlert(true)
+                                setcloseAlert(!closeAlert)
 
                             }} >
                                 <button type="button" class="inline-flex flex-shrink-0 justify-center items-center h-4 w-4 rounded-md text-white/[.5] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-red-800 focus:ring-red-500 transition-all text-sm dark:focus:ring-offset-red-500 dark:focus:ring-red-700">

@@ -25,12 +25,12 @@ function Dashboard() {
 
     const handleDownload = () => {
         html2canvas(contentRef.current).then((canvas) => {
-          const imgData = canvas.toDataURL('image/png');
-          const pdf = new jsPDF();
-          pdf.addImage(imgData, 'PNG', 0, 0, 210, 297); // Adjust width and height as needed
-          pdf.save('Student Stats.pdf');
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF();
+            pdf.addImage(imgData, 'PNG', 0, 0, 210, 297); // Adjust width and height as needed
+            pdf.save('Student Stats.pdf');
         });
-      };
+    };
 
 
 
@@ -146,7 +146,7 @@ function Dashboard() {
                                             </thead>
                                             <tbody>
 
-                                            {completeEventTable.map((event, index) => (
+                                                {completeEventTable.map((event, index) => (
                                                     <tr key={index}>
                                                         <td className="py-3 px-5 border-b border-blue-gray-50">
                                                             <div className="flex items-center gap-4">
@@ -156,7 +156,7 @@ function Dashboard() {
                                                         <td className="py-3 px-5 border-b border-blue-gray-50">
                                                             <div className="w-10/12">
                                                                 <p className="antialiased font-sans mb-1 block text-xs font-medium text-blue-gray-600">{event.totalParticipants}</p>
-                                                                
+
                                                             </div>
                                                         </td>
                                                     </tr>

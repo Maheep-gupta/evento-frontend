@@ -1,18 +1,11 @@
-import React, {  } from 'react'
-import { Link } from 'react-router-dom';
+import React from 'react'
 
-function EventCard({ dataToFetch, eventName, date, eventCategory,eventImage,registered }) {
-    
-    return (
-        <Link to={`/eventDetail/${dataToFetch}`}>
-            
+function SkeletonCard() {
+  return (
+    <>   
         <div className="relative flex w-full max-w-[12rem]  lg:max-w-[15rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg mt-5 mb-4">
             <div className="relative h-[8rem] lg:h-[10rem] mx-2 mt-2 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
-                <img
-                        src={`${eventImage}`}
-                    alt="ui/ux review check"
-                />
-                <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60"></div>
+                <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60 animate-pulse"></div>
                 <button
                     className="!absolute top-4 right-4 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-red-500 transition-all hover:bg-red-500/10 active:bg-red-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                     type="button"
@@ -34,27 +27,28 @@ function EventCard({ dataToFetch, eventName, date, eventCategory,eventImage,regi
             <div className="p-6 pb-0">
                 <div className="mb-3 flex items-center justify-between">
                     <h5 className="block font-sans text-l font-medium leading-snug tracking-normal text-blue-gray-900 antialiased">
-                        {(eventName)}
+                        {}
                     </h5>
                 </div>
                 <div className="block font-sans text-base font-light leading-relaxed text-gray-700 antialiased">
-                    <p className='font-sans'>Date:-{date}</p>
-                    <p className='font-sans'>Venue:-College Campus</p>
-                    <p className='font-sans'>Event Category:-{ eventCategory}</p>
+                    <p className='font-sans h-4 mt-2 bg-gray-400 animate-pulse '>{}</p>
+                    <p className='font-sans h-4 mt-2 bg-gray-400 animate-pulse'>{}</p>
+                    <p className='font-sans h-4 mt-2 bg-gray-400 animate-pulse'>{}</p>
+
                 </div>
             </div>
             <div className="p-2">
                 <button
-                    className=" block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-2 py-2 font-semibold my-2"
+                    className=" block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-2 py-2 font-semibold my-2 animate-pulse h-12"
                     type="button"
                     data-ripple-light="true"
                 >
-                    {registered?'Registered':'JOIN'}
+                    {}
                 </button>
             </div>
         </div>
-        </Link>
-    )
+        </>
+  )
 }
 
-export default EventCard
+export default SkeletonCard
