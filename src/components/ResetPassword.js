@@ -1,6 +1,50 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
+import Alerts from './Alerts'
 
 function ResetPassword() {
+    const [formData, setformData] = useState({
+        collegeId: localStorage.getItem('id'),
+        password: ''
+    })
+    const [ActivateAlert, setActivateAlert] = useState(false)
+    const [alertMsg, setAlertMsg] = useState({
+        statusCode: '',
+        msg: ''
+    })
+    const [ConfirmPassword, setConfirmPassword] = useState('')
+    const [Password, setPassword] = useState('')
+
+    const handleClick = () => {
+        if (Password === ConfirmPassword) {
+            setformData({ ...formData, password: Password })
+            console.log(formData);
+            axios.post(
+                "https://wax-nostalgic-macaroni.glitch.me/api/update/resetPasword",
+                formData, // Data object
+                {
+                    headers: { "Content-Type": "application/json" }, // Headers
+                }
+            )
+                .then((response) => {
+                    if (response.data.statusCode === 200) {
+                        localStorage.setItem('id', formData.collegeId);
+                        window.location.href = '/';
+                        setActivateAlert(true)
+                        setAlertMsg({ statusCode: response.data.statusCode, msg: response.data.msg });
+                    } else {
+                        console.log("Error:", response.data.msg);
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+        } else {
+            setActivateAlert(true)
+            setAlertMsg({ statusCode: 400, msg: "Password not matched" });
+        }
+
+    }
     return (
         <div>
             <div className="flex items-center justify-center p-12 h-screen">
@@ -8,7 +52,7 @@ function ResetPassword() {
                     <h1 className="text-4xl font-medium">Reset password</h1>
                     <p className="text-slate-500">Enter Your New PAssword to reset</p>
 
-                    <form action="" className="my-10">
+                    <div className="my-10">
                         <div className="flex flex-col space-y-5">
                             <label for="password">
                                 <p className="font-medium text-slate-700 pb-2"> Password</p>
@@ -18,6 +62,7 @@ function ResetPassword() {
                                     type="text"
                                     className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
                                     placeholder="Password"
+                                    onChange={(e) => { setPassword(e.target.value) }}
                                 />
                             </label>
                             <label for="ConfirmPassword">
@@ -28,10 +73,11 @@ function ResetPassword() {
                                     type="password"
                                     className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
                                     placeholder="Confirm Password"
+                                    onChange={(e) => { setConfirmPassword(e.target.value) }}
                                 />
                             </label>
 
-                            <button className="w-full py-3 font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center">
+                            <button onClick={handleClick} className="w-full py-3 font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
@@ -50,8 +96,11 @@ function ResetPassword() {
                                 <span>Reset Password</span>
                             </button>
                         </div>
-                    </form>
+                    </div>
                 </div>
+            </div>
+            <div className="pt-4">
+                {ActivateAlert === true ? alertMsg.statusCode === 200 ? <Alerts msg={alertMsg.msg} type={200} /> : <Alerts msg={alertMsg.msg} type={400} /> : ''}
             </div>
         </div>
     );

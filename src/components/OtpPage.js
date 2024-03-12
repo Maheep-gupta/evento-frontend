@@ -1,6 +1,33 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
 
 function OtpPage() {
+    const [formData, setformData] = useState({
+        otp: '',
+        collegeId:localStorage.getItem('id')
+    })
+    const handleClick = () => {
+        console.log(formData);
+        axios.post(
+          "https://wax-nostalgic-macaroni.glitch.me/api/update/verifyOTP",
+          formData, // Data object
+          {
+            headers: { "Content-Type": "application/json" }, // Headers
+          }
+        )
+        .then((response) => {
+          if (response.data.statusCode === 200) {
+            //   localStorage.setItem('id', formData.collegeId);
+              window.location.href = '/resetPassword';
+            console.log("haa otp verified");
+          } else {
+            console.log("Error:", response.data.msg);
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+      }
     return (
         <div>
             <div className="flex items-center justify-center p-12 h-screen">
@@ -8,7 +35,7 @@ function OtpPage() {
                     <h1 className="text-4xl font-medium">OTP Verification</h1>
                     <p className="text-slate-500">Fill up the OTP to verify your email</p>
 
-                    <form action="" className="my-10">
+                    <div className="my-10">
                         <div className="flex flex-col space-y-5">
                             <label for="otp-box">
                                 <p className="font-medium text-slate-700 pb-2">OTP</p>
@@ -18,10 +45,14 @@ function OtpPage() {
                                     type="text"
                                     className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
                                     placeholder="OTP here"
+                                    value={formData.otp}
+                                    onChange={(e) => {
+                                      setformData({ ...formData, otp: e.target.value });
+                                  }}
                                 />
                             </label>
 
-                            <button className="w-full py-3 font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center">
+                            <button onClick={handleClick} className="w-full py-3 font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
@@ -41,7 +72,7 @@ function OtpPage() {
                             </button>
                           
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

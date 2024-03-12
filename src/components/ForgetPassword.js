@@ -1,7 +1,31 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function ForgetPassword() {
+  const [formData, setformData] = useState({
+    collegeId:21038201000
+  })
+  const handleClick=() => {
+    axios.post(
+      "https://wax-nostalgic-macaroni.glitch.me/api/update/verifyEmail",
+      formData, // Data object
+      {
+        headers: { "Content-Type": "application/json" }, // Headers
+      }
+    )
+    .then((response) => {
+      if (response.data.statusCode === 200) {
+          localStorage.setItem('id', formData.collegeId);
+          window.location.href = '/verify';
+      } else {
+        console.log("Error:", response.data.msg);
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+  }
   return (
     <div>
       <div className="flex items-center justify-center p-12 h-screen">
@@ -9,7 +33,7 @@ function ForgetPassword() {
           <h1 className="text-4xl font-medium">Reset password</h1>
           <p className="text-slate-500">Fill up the form to verify the email</p>
 
-          <form action="" className="my-10">
+          <div className="my-10">
             <div className="flex flex-col space-y-5">
               <label for="collegeId">
                 <p className="font-medium text-slate-700 pb-2">College ID</p>
@@ -19,10 +43,14 @@ function ForgetPassword() {
                   type="collegeId"
                   className="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"
                   placeholder="College ID"
+                  value={formData.collegeId}
+                  onChange={(e) => {
+                    setformData({ ...formData, collegeId: e.target.value });
+                }}
                 />
               </label>
 
-              <button className="w-full py-3 font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center">
+              <button onClick={handleClick} className="w-full py-3 font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -66,7 +94,7 @@ function ForgetPassword() {
                 </Link>
               </p>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

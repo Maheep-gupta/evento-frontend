@@ -35,9 +35,9 @@ function App() {
         <Route path="/participatedEvent" exact element={userLogged==='true' ?<ParticipatedEvents />:<Navigate to='/'/>} />
         <Route path="/upcomingEvent" exact element={userLogged==='true' ?<UpcomingEvent />:<Navigate to='/'/>} />
         <Route path="/user/account" exact element={userLogged==='true' || adminLogin==='true' ?<Account />:<Navigate to='/'/>} />
-        <Route path="/forgetPassword" exact element={userLogged==='true' ?<ForgetPassword />:<Navigate to='/'/>} />
-        <Route path="/verify" exact element={userLogged==='true' ?<OtpPage />:<Navigate to='/'/>} />
-        <Route path="/resetPassword" exact element={userLogged==='true' ?<ResetPassword />:<Navigate to='/'/>} />
+        <Route path="/forgetPassword" exact element={<ForgetPassword />} />
+        <Route path="/verify" exact element={<OtpPage />} />
+        <Route path="/resetPassword" exact element={<ResetPassword />} />
         <Route path="/eventDetail/:id" exact element={userLogged==='true'|| adminLogin==='true' ?<EventsDetail />:<Navigate to='/'/>} />
 
         
